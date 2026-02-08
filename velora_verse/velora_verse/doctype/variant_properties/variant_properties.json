@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:type",
  "creation": "2026-02-08 08:09:45.974112",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -21,7 +20,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Values",
-   "options": "Variant Value"
+   "options": "Variants Type",
+   "reqd": 1
   },
   {
    "fieldname": "type",
@@ -29,19 +29,17 @@
    "in_list_view": 1,
    "label": "Type",
    "options": "Variants Type",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-08 10:00:48.479509",
+ "modified": "2026-02-08 11:53:31.121884",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Variant Properties",
- "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

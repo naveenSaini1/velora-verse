@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "prompt",
  "creation": "2026-02-08 09:53:55.064382",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -17,7 +16,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-08 09:53:59.314997",
+ "modified": "2026-02-08 11:31:15.509891",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Variant Value",
