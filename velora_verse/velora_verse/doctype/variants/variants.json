@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-07 21:44:25.732853",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "variants_details_section",
+  "variant_name",
+  "column_break_dybt",
+  "quantity",
+  "price",
+  "is_stock",
+  "section_break_avih",
+  "image",
+  "variant_values"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_avih",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "variant_values",
+   "fieldtype": "Table",
+   "label": "Variant Values",
+   "options": "Variant Properties"
+  },
+  {
+   "fieldname": "variant_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Items",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Table",
+   "label": "Image",
+   "options": "Images"
+  },
+  {
+   "fieldname": "column_break_dybt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_stock",
+   "fieldtype": "Check",
+   "label": "Is Stock"
+  },
+  {
+   "fieldname": "variants_details_section",
+   "fieldtype": "Section Break",
+   "label": "Variants Details"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-08 09:59:11.401144",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Variants",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
