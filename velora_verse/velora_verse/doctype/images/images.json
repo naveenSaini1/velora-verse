@@ -10,7 +10,8 @@
   "is_primary",
   "column_break_qvjc",
   "image",
-  "preview"
+  "preview",
+  "alt_text"
  ],
  "fields": [
   {
@@ -41,6 +42,12 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Is Primary"
+  },
+  {
+   "fieldname": "alt_text",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Alt Text"
   }
  ],
  "grid_page_length": 50,

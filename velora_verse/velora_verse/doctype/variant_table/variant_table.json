@@ -1,34 +1,35 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:values",
- "creation": "2026-02-08 08:09:45.974112",
+ "creation": "2026-02-09 22:06:01.778923",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "details_section",
-  "values",
-  "column_break_dnpm",
-  "abbreviation"
+  "type",
+  "column_break_wxjf",
+  "value"
  ],
  "fields": [
   {
-   "fieldname": "column_break_dnpm",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "values",
-   "fieldtype": "Data",
+   "fieldname": "type",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Values",
+   "label": "Type",
+   "options": "Variants Type",
    "reqd": 1
   },
   {
-   "fieldname": "abbreviation",
-   "fieldtype": "Data",
+   "fieldname": "column_break_wxjf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Abbreviation",
+   "label": "Value",
+   "options": "Variant Properties",
    "reqd": 1
   },
   {
@@ -41,10 +42,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-09 21:55:59.845897",
+ "modified": "2026-02-09 22:07:17.964046",
  "modified_by": "Administrator",
  "module": "velora-verse",
- "name": "Variant Properties",
+ "name": "Variant Table",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class VariantValue(Document):
+class VariantTable(Document):
 	pass

@@ -12,6 +12,8 @@
   "column_break_egai",
   "parent_category",
   "is_child",
+  "is_active",
+  "display_order",
   "section_break_lrcn",
   "description"
  ],
@@ -33,8 +35,8 @@
    "fieldname": "parent_category",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Parent Category ",
-   "mandatory_depends_on": "eval:doc.is_group;",
+   "label": "Parent Category",
+   "mandatory_depends_on": "eval:doc.is_child;",
    "options": "Category"
   },
   {
@@ -63,6 +65,19 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Is Child"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Active"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_order",
+   "fieldtype": "Int",
+   "label": "Display Order"
   }
  ],
  "grid_page_length": 50,

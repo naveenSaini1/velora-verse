@@ -45,15 +45,15 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Variant Value",
+   "label": "Variant Type Property",
    "link_count": 0,
-   "link_to": "Variant Value",
+   "link_to": "Variant Type Property",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2026-02-08 10:03:16.818557",
+ "modified": "2026-02-09 22:45:17.120029",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Velora Verse",

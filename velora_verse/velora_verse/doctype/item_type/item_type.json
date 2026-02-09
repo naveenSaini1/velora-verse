@@ -6,12 +6,18 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_a6il"
+  "section_break_a6il",
+  "description"
  ],
  "fields": [
   {
    "fieldname": "section_break_a6il",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,

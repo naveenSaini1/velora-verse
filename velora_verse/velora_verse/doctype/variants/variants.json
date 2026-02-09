@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2026-02-07 21:44:25.732853",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -26,7 +27,7 @@
    "fieldname": "variant_values",
    "fieldtype": "Table",
    "label": "Variant Values",
-   "options": "Variant Properties"
+   "options": "Variant Table"
   },
   {
    "fieldname": "variant_name",
@@ -49,17 +50,21 @@
   {
    "fieldname": "quantity",
    "fieldtype": "Int",
-   "label": "Quantity"
+   "label": "Quantity",
+   "non_negative": 1
   },
   {
    "fieldname": "price",
    "fieldtype": "Currency",
-   "label": "Price"
+   "in_list_view": 1,
+   "label": "Price",
+   "non_negative": 1
   },
   {
    "default": "0",
    "fieldname": "is_stock",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Is Stock"
   },
   {
@@ -70,16 +75,19 @@
   {
    "fieldname": "title",
    "fieldtype": "Data",
-   "label": "Title"
+   "in_list_view": 1,
+   "label": "Title",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-08 11:48:44.459274",
+ "modified": "2026-02-09 22:08:07.035416",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Variants",
+ "naming_rule": "By script",
  "owner": "Administrator",
  "permissions": [
   {
@@ -97,7 +105,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "title"
 }

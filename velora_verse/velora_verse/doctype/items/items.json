@@ -8,11 +8,14 @@
  "field_order": [
   "item_name",
   "type",
+  "status",
   "in_stock",
   "has_variants",
   "column_break_hvpk",
   "base_price",
   "sku",
+  "section_break_desc",
+  "description",
   "section_break_llgr",
   "item_image",
   "category"
@@ -22,18 +25,21 @@
    "default": "0",
    "fieldname": "in_stock",
    "fieldtype": "Check",
-   "label": "In Stock"
+   "label": "In Stock",
+   "read_only": 1
   },
   {
    "fieldname": "type",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Type",
    "options": "Item Type"
   },
   {
    "fieldname": "sku",
-   "fieldtype": "Long Text",
-   "label": "SKU"
+   "fieldtype": "Data",
+   "label": "SKU",
+   "unique": 1
   },
   {
    "fieldname": "section_break_llgr",
@@ -64,6 +70,7 @@
   {
    "fieldname": "base_price",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Base Price",
    "non_negative": 1,
    "reqd": 1
@@ -75,11 +82,35 @@
    "label": "Name",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nDiscontinued"
+  },
+  {
+   "fieldname": "section_break_desc",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
+ "links": [
+  {
+   "link_doctype": "Variants",
+   "link_fieldname": "variant_name",
+   "group": "Variants"
+  }
+ ],
  "modified": "2026-02-08 09:57:13.189050",
  "modified_by": "Administrator",
  "module": "velora-verse",
