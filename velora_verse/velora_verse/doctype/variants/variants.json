@@ -82,7 +82,13 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
+ "links": [
+     {
+   "link_doctype": "Wishlist items",
+   "link_fieldname": "variant",
+   "group": "title"
+  }
+ ],
  "modified": "2026-02-09 22:08:07.035416",
  "modified_by": "Administrator",
  "module": "velora-verse",

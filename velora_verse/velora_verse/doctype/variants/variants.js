@@ -5,6 +5,7 @@ frappe.ui.form.on("Variants", {
     setup(frm) {
         frm.set_query("value", "variant_values", function (doc, cdt, cdn) {
             let row = locals[cdt][cdn];
+            console.log(row.type,"rowwwwwwwwwwwwwwwwwwww",cdt)
             if (row.type) {
                 return {
                     query: "velora_verse.velora_verse.doctype.variants.variants.get_variant_values",
