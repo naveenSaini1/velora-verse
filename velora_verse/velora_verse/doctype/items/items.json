@@ -14,6 +14,8 @@
   "column_break_hvpk",
   "base_price",
   "sku",
+  "average_rating",
+  "review_count",
   "section_break_desc",
   "description",
   "section_break_llgr",
@@ -100,18 +102,27 @@
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description"
+  },
+  {
+   "default": "0",
+   "fieldname": "average_rating",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Average Rating",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "review_count",
+   "fieldtype": "Int",
+   "label": "Review Count",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [
-  {
-   "link_doctype": "Variants",
-   "link_fieldname": "variant_name",
-   "group": "Variants"
-  }
- ],
- "modified": "2026-02-08 09:57:13.189050",
+ "links": [],
+ "modified": "2026-02-10 23:00:00.000000",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Items",

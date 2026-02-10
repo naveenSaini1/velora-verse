@@ -1,7 +1,6 @@
 {
  "actions": [],
- "allow_rename": 1,
- "creation": "2026-02-10 21:48:33.565860",
+ "creation": "2026-02-10 23:00:00.000000",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -9,12 +8,9 @@
   "variant",
   "variant_title",
   "column_break_info",
-  "price",
-  "in_stock",
-  "section_break_meta",
-  "added_on",
-  "column_break_notes",
-  "notes"
+  "quantity",
+  "rate",
+  "amount"
  ],
  "fields": [
   {
@@ -38,51 +34,38 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "price",
+   "default": "1",
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "reqd": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "rate",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Price",
+   "label": "Rate",
    "fetch_from": "variant.price",
    "read_only": 1
   },
   {
-   "default": "0",
-   "fieldname": "in_stock",
-   "fieldtype": "Check",
+   "fieldname": "amount",
+   "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "In Stock",
-   "fetch_from": "variant.is_stock",
+   "label": "Amount",
    "read_only": 1
-  },
-  {
-   "fieldname": "section_break_meta",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "added_on",
-   "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "label": "Added On",
-   "read_only": 1
-  },
-  {
-   "fieldname": "column_break_notes",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "notes",
-   "fieldtype": "Small Text",
-   "label": "Notes"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-10 22:16:52.067649",
+ "modified": "2026-02-10 23:00:00.000000",
  "modified_by": "Administrator",
  "module": "velora-verse",
- "name": "Wishlist Items",
+ "name": "Cart Items",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

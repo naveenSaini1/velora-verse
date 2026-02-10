@@ -1,17 +1,29 @@
 # Copyright (c) 2026, velora-verse and contributors
 # For license information, please see license.txt
 
+import re
+
 import frappe
 from frappe.model.document import Document
 
 
 class Items(Document):
 	def validate(self):
+		self.validate_base_price()
+		self.validate_sku_format()
 		self.validate_primary_image()
 		self.validate_duplicate_categories()
 
 	def on_trash(self):
 		self.validate_no_variants()
+
+	def validate_base_price(self):
+		if self.base_price is not None and self.base_price <= 0:
+			frappe.throw("Base Price must be greater than 0.")
+
+	def validate_sku_format(self):
+		if self.sku and not re.match(r"^[A-Za-z0-9\-_]+$", self.sku):
+			frappe.throw("SKU can only contain letters, numbers, hyphens, and underscores.")
 
 	def validate_primary_image(self):
 		if not self.item_image:

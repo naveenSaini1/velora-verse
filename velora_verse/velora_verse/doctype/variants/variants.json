@@ -13,6 +13,7 @@
   "quantity",
   "price",
   "is_stock",
+  "wishlist_count",
   "section_break_avih",
   "image",
   "variant_values"
@@ -78,17 +79,19 @@
    "in_list_view": 1,
    "label": "Title",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "wishlist_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Wishlist Count",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [
-     {
-   "link_doctype": "Wishlist items",
-   "link_fieldname": "variant",
-   "group": "title"
-  }
- ],
+ "links": [],
  "modified": "2026-02-09 22:08:07.035416",
  "modified_by": "Administrator",
  "module": "velora-verse",

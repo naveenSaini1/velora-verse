@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"ZvFYCLxcPe\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Velora Verse</span>\",\"col\":12}},{\"id\":\"GVxLbErQWo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"RebME6lrrb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Variants\",\"col\":3}},{\"id\":\"gGRXovJgtG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":3}},{\"id\":\"9t7VRSrKqU\",\"type\":\"header\",\"data\":{\"text\":\"<br>\",\"col\":12}},{\"id\":\"e2PFBQoSh0\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Doctypes</b></span>\",\"col\":12}},{\"id\":\"oHn9JeshPj\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}}]",
+ "content": "[{\"id\":\"hdr01\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Velora Verse</b></span>\",\"col\":12}},{\"id\":\"par01\",\"type\":\"paragraph\",\"data\":{\"text\":\"E-commerce product catalog \\u2014 items, categories, variants, reviews, wishlists, and carts.\",\"col\":12}},{\"id\":\"nc01\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Products\",\"col\":3}},{\"id\":\"nc02\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"In-Stock Variants\",\"col\":3}},{\"id\":\"nc03\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Customer Reviews\",\"col\":3}},{\"id\":\"nc04\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Carts\",\"col\":3}},{\"id\":\"sp01\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr02\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc01\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Items\",\"col\":3}},{\"id\":\"sc02\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Variants\",\"col\":3}},{\"id\":\"sc03\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":3}},{\"id\":\"sc04\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Review\",\"col\":3}},{\"id\":\"sc05\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Wishlist\",\"col\":3}},{\"id\":\"sc06\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cart\",\"col\":3}},{\"id\":\"sp02\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr03\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Quick Lists</b></span>\",\"col\":12}},{\"id\":\"ql01\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Latest Reviews\",\"col\":6}},{\"id\":\"ql02\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Recent Carts\",\"col\":6}},{\"id\":\"sp03\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr04\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"cd01\",\"type\":\"card\",\"data\":{\"card_name\":\"Product Catalog\",\"col\":4}},{\"id\":\"cd02\",\"type\":\"card\",\"data\":{\"card_name\":\"Customer Engagement\",\"col\":4}},{\"id\":\"cd03\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}}]",
  "creation": "2026-02-07 21:23:16.188989",
  "custom_blocks": [],
  "docstatus": 0,
@@ -16,7 +16,85 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Masters",
+   "label": "Product Catalog",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Items",
+   "link_count": 0,
+   "link_to": "Items",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Variants",
+   "link_count": 0,
+   "link_to": "Variants",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Category",
+   "link_count": 0,
+   "link_to": "Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer Engagement",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Review",
+   "link_count": 0,
+   "link_to": "Review",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Wishlist",
+   "link_count": 0,
+   "link_to": "Wishlist",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cart",
+   "link_count": 0,
+   "link_to": "Cart",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
    "link_count": 3,
    "link_type": "DocType",
    "onboard": 0,
@@ -53,28 +131,58 @@
    "type": "Link"
   }
  ],
- "modified": "2026-02-09 22:45:17.120029",
+ "modified": "2026-02-10 22:15:45.108012",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Velora Verse",
- "number_cards": [],
+ "number_cards": [
+  {
+   "color": "#29cd42",
+   "label": "Total Products",
+   "number_card_name": "Total Products"
+  },
+  {
+   "color": "#4299e1",
+   "label": "In-Stock Variants",
+   "number_card_name": "In-Stock Variants"
+  },
+  {
+   "color": "#ECAD4B",
+   "label": "Customer Reviews",
+   "number_card_name": "Customer Reviews"
+  },
+  {
+   "color": "#EC864B",
+   "label": "Active Carts",
+   "number_card_name": "Active Carts"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
- "quick_lists": [],
+ "quick_lists": [
+  {
+   "document_type": "Review",
+   "label": "Latest Reviews"
+  },
+  {
+   "document_type": "Cart",
+   "label": "Recent Carts"
+  }
+ ],
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [
   {
    "color": "Green",
    "doc_view": "List",
-   "label": "Item",
+   "label": "Items",
    "link_to": "Items",
    "stats_filter": "[]",
    "type": "DocType"
   },
   {
-   "color": "Grey",
+   "color": "Blue",
    "doc_view": "List",
    "label": "Variants",
    "link_to": "Variants",
@@ -86,6 +194,30 @@
    "doc_view": "List",
    "label": "Category",
    "link_to": "Category",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Review",
+   "link_to": "Review",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "label": "Wishlist",
+   "link_to": "Wishlist",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Cart",
+   "link_to": "Cart",
    "stats_filter": "[]",
    "type": "DocType"
   }

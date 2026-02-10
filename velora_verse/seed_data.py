@@ -10,32 +10,52 @@ def seed():
 
 	print("\n=== Seeding Velora Verse Data ===\n")
 
-	print("0/6 Cleaning up existing data...")
+	print("0/11 Cleaning up existing data...")
 	_cleanup()
 	frappe.db.commit()
 
-	print("\n1/6 Creating Item Types...")
+	print("\n1/11 Creating Number Cards...")
+	_create_number_cards()
+	frappe.db.commit()
+
+	print("\n2/11 Creating Item Types...")
 	_create_item_types()
 	frappe.db.commit()
 
-	print("\n2/6 Creating Categories...")
+	print("\n3/11 Creating Categories...")
 	_create_categories()
 	frappe.db.commit()
 
-	print("\n3/6 Creating Variant Types...")
+	print("\n4/11 Creating Variant Types...")
 	_create_variant_types()
 	frappe.db.commit()
 
-	print("\n4/6 Creating Variant Type Properties...")
+	print("\n5/11 Creating Variant Type Properties...")
 	_create_variant_type_properties()
 	frappe.db.commit()
 
-	print("\n5/6 Creating Items...")
+	print("\n6/11 Creating Items...")
 	items = _create_items()
 	frappe.db.commit()
 
-	print("\n6/6 Creating Variants...")
+	print("\n7/11 Creating Variants...")
 	_create_variants(items)
+	frappe.db.commit()
+
+	print("\n8/11 Creating Users...")
+	users = _create_users()
+	frappe.db.commit()
+
+	print("\n9/11 Creating Reviews...")
+	_create_reviews(items, users)
+	frappe.db.commit()
+
+	print("\n10/11 Creating Wishlists...")
+	_create_wishlists(users)
+	frappe.db.commit()
+
+	print("\n11/11 Creating Carts...")
+	_create_carts(users)
 	frappe.db.commit()
 
 	print("\n=== Seed complete! ===\n")
@@ -45,13 +65,34 @@ def seed():
 # 0. Cleanup — remove all existing data so we start fresh
 # ---------------------------------------------------------------------------
 def _cleanup():
-	# Delete in reverse dependency order
-	for dt in ["Variants", "Items", "Variant Type Property", "Variants Type", "Category", "Item Type"]:
+	# Delete in reverse dependency order — new doctypes first, then original ones
+	for dt in [
+		"Cart", "Review", "Wishlist",
+		"Variants", "Items",
+		"Variant Type Property", "Variants Type", "Category", "Item Type",
+	]:
 		docs = frappe.get_all(dt, pluck="name")
 		for name in docs:
 			frappe.delete_doc(dt, name, ignore_permissions=True, force=True)
 		if docs:
 			print(f"  Deleted {len(docs)} {dt} records")
+
+	# Delete workspace number cards
+	for card_name in ["Total Products", "In-Stock Variants", "Customer Reviews", "Active Carts"]:
+		if frappe.db.exists("Number Card", card_name):
+			frappe.delete_doc("Number Card", card_name, ignore_permissions=True, force=True)
+			print(f"  Deleted Number Card: {card_name}")
+
+	# Delete test customer users (customer1@ through customer20@)
+	test_users = frappe.get_all(
+		"User",
+		filters={"email": ["like", "customer%@veloraverse.com"]},
+		pluck="name",
+	)
+	for email in test_users:
+		frappe.delete_doc("User", email, ignore_permissions=True, force=True)
+	if test_users:
+		print(f"  Deleted {len(test_users)} test User records")
 
 	# Reset Items naming series so we start from ITEM-0001
 	if frappe.db.exists("Series", "ITEM-"):
@@ -59,7 +100,68 @@ def _cleanup():
 
 
 # ---------------------------------------------------------------------------
-# 1. Item Types (20)
+# 1. Number Cards (4) — KPI tiles for the workspace dashboard
+# ---------------------------------------------------------------------------
+def _create_number_cards():
+	cards = [
+		{
+			"name": "Total Products",
+			"label": "Total Products",
+			"document_type": "Items",
+			"function": "Count",
+			"is_public": 1,
+			"filters_json": '[["Items","status","=","Active"]]',
+			"show_percentage_stats": 1,
+			"stats_time_interval": "Monthly",
+			"color": "#29cd42",
+		},
+		{
+			"name": "In-Stock Variants",
+			"label": "In-Stock Variants",
+			"document_type": "Variants",
+			"function": "Count",
+			"is_public": 1,
+			"filters_json": '[["Variants","is_stock","=",1]]',
+			"show_percentage_stats": 1,
+			"stats_time_interval": "Monthly",
+			"color": "#4299e1",
+		},
+		{
+			"name": "Customer Reviews",
+			"label": "Customer Reviews",
+			"document_type": "Review",
+			"function": "Count",
+			"is_public": 1,
+			"filters_json": "[]",
+			"show_percentage_stats": 1,
+			"stats_time_interval": "Monthly",
+			"color": "#ECAD4B",
+		},
+		{
+			"name": "Active Carts",
+			"label": "Active Carts",
+			"document_type": "Cart",
+			"function": "Count",
+			"is_public": 1,
+			"filters_json": "[]",
+			"show_percentage_stats": 1,
+			"stats_time_interval": "Monthly",
+			"color": "#EC864B",
+		},
+	]
+
+	for card in cards:
+		if frappe.db.exists("Number Card", card["name"]):
+			print(f"  - {card['name']} (exists)")
+			continue
+
+		doc = frappe.get_doc({"doctype": "Number Card", "type": "Document Type", **card})
+		doc.insert(ignore_permissions=True)
+		print(f"  + {card['name']}")
+
+
+# ---------------------------------------------------------------------------
+# 2. Item Types (20)
 # ---------------------------------------------------------------------------
 def _create_item_types():
 	types = [
@@ -510,3 +612,316 @@ def _create_variants(items):
 			print(f"  ! {item_name} — {str(e)[:80]}")
 
 	print(f"\n  Total variants created: {count}")
+
+
+# ---------------------------------------------------------------------------
+# 7. Users (20) — test customer accounts for reviews, wishlists, and carts
+# ---------------------------------------------------------------------------
+def _create_users():
+	user_profiles = [
+		("customer1@veloraverse.com", "Aarav", "Sharma"),
+		("customer2@veloraverse.com", "Priya", "Patel"),
+		("customer3@veloraverse.com", "Rohan", "Mehta"),
+		("customer4@veloraverse.com", "Ananya", "Gupta"),
+		("customer5@veloraverse.com", "Vikram", "Singh"),
+		("customer6@veloraverse.com", "Sneha", "Reddy"),
+		("customer7@veloraverse.com", "Arjun", "Kumar"),
+		("customer8@veloraverse.com", "Diya", "Nair"),
+		("customer9@veloraverse.com", "Karthik", "Iyer"),
+		("customer10@veloraverse.com", "Meera", "Joshi"),
+		("customer11@veloraverse.com", "Aditya", "Verma"),
+		("customer12@veloraverse.com", "Ishita", "Rao"),
+		("customer13@veloraverse.com", "Rahul", "Desai"),
+		("customer14@veloraverse.com", "Kavya", "Menon"),
+		("customer15@veloraverse.com", "Siddharth", "Bhatt"),
+		("customer16@veloraverse.com", "Neha", "Chopra"),
+		("customer17@veloraverse.com", "Pranav", "Malhotra"),
+		("customer18@veloraverse.com", "Riya", "Saxena"),
+		("customer19@veloraverse.com", "Harsh", "Tiwari"),
+		("customer20@veloraverse.com", "Pooja", "Kulkarni"),
+	]
+
+	users = []
+	for email, first, last in user_profiles:
+		if frappe.db.exists("User", email):
+			print(f"  - {email} (exists)")
+			users.append(email)
+			continue
+
+		doc = frappe.get_doc({
+			"doctype": "User",
+			"email": email,
+			"first_name": first,
+			"last_name": last,
+			"user_type": "Website User",
+			"send_welcome_email": 0,
+			"new_password": "Velora@2026#Cx",
+		})
+		doc.insert(ignore_permissions=True)
+		users.append(email)
+		print(f"  + {first} {last} ({email})")
+
+	print(f"\n  Total users: {len(users)}")
+	return users
+
+
+# ---------------------------------------------------------------------------
+# 8. Reviews (20) — one review per user, spread across items
+# ---------------------------------------------------------------------------
+def _create_reviews(items, users):
+	# Frappe Rating: 0.2 = 1 star, 0.4 = 2 stars, 0.6 = 3 stars, 0.8 = 4 stars, 1.0 = 5 stars
+	# One review per user per item — each user reviews a different item
+	reviews_data = [
+		# (user_index, item_name, rating, title, text)
+		(
+			0, "Classic Cotton T-Shirt", 1.0,
+			"Best everyday tee",
+			"Super soft cotton, fits perfectly. The color hasn't faded after multiple washes. Highly recommend for daily wear!",
+		),
+		(
+			1, "Premium Zip Hoodie", 0.8,
+			"Great hoodie, runs a bit large",
+			"Quality fleece lining keeps me warm. The zipper is solid. Only downside is it runs a size bigger than expected.",
+		),
+		(
+			2, "Slim Fit Denim Jeans", 1.0,
+			"Perfect fit and quality",
+			"These jeans are exactly what I was looking for. The stretch denim is comfortable all day and the slim fit looks sharp.",
+		),
+		(
+			3, "Urban Runner Sneakers", 0.8,
+			"Comfortable and stylish",
+			"Great for both running and casual wear. Cushioning is excellent. Wish they had more color options.",
+		),
+		(
+			4, "Winter Puffer Jacket", 1.0,
+			"Essential winter gear",
+			"Survived a -10°C trip without any issues. Lightweight yet incredibly warm. The water-resistant shell is a bonus.",
+		),
+		(
+			5, "Floral Maxi Dress", 0.6,
+			"Pretty but fabric could be better",
+			"The print is gorgeous and the fit is flattering. However, the fabric feels a bit thin for the price point.",
+		),
+		(
+			6, "Classic Polo Shirt", 0.8,
+			"Smart casual staple",
+			"Perfect for office and weekend wear. The pique fabric breathes well. Logo embroidery is tasteful and subtle.",
+		),
+		(
+			7, "Merino Wool Sweater", 1.0,
+			"Luxury feel at a great price",
+			"Incredibly soft merino wool that doesn't itch at all. Keeps me warm without overheating. Worth every penny.",
+		),
+		(
+			8, "Leather Travel Backpack", 0.8,
+			"Beautiful craftsmanship",
+			"The leather quality is outstanding and the brass hardware adds a premium feel. Laptop compartment fits my 15-inch perfectly.",
+		),
+		(
+			9, "Chronograph Wrist Watch", 1.0,
+			"Stunning timepiece",
+			"The sapphire crystal is crystal clear and the chronograph functions work flawlessly. Gets compliments every time I wear it.",
+		),
+		(
+			10, "Aviator Sunglasses", 0.8,
+			"Classic look, great protection",
+			"Polarized lenses make a huge difference. Lightweight and comfortable for all-day wear. Classic aviator style never goes out of fashion.",
+		),
+		(
+			11, "Genuine Leather Belt", 1.0,
+			"Solid leather belt",
+			"Heavy-duty genuine leather that gets better with age. The nickel buckle is sturdy and the sizing is accurate.",
+		),
+		(
+			12, "Cashmere Winter Scarf", 0.8,
+			"Soft and luxurious",
+			"The cashmere is incredibly soft. Keeps my neck warm without being bulky. The fringed edges add a nice touch.",
+		),
+		(
+			13, "Chelsea Leather Boots", 1.0,
+			"Worth the investment",
+			"These boots are built to last. The Goodyear welt construction means they can be resoled. Comfortable right out of the box.",
+		),
+		(
+			14, "Cotton Cargo Shorts", 0.6,
+			"Good for the price",
+			"Decent cargo shorts for summer. Pockets are useful. The elastic waistband is comfortable but the fabric could be softer.",
+		),
+		(
+			15, "Classic Cotton T-Shirt", 0.8,
+			"Reliable and comfortable",
+			"Bought this as a second purchase after the first one held up so well. Great value for the price.",
+		),
+		(
+			16, "Slim Fit Denim Jeans", 0.8,
+			"Solid jeans for the price",
+			"Nice stretch and the color is rich. The slim fit is flattering without being too tight. Good everyday jeans.",
+		),
+		(
+			17, "Snapback Baseball Cap", 1.0,
+			"Perfect summer cap",
+			"Love the snapback fit — adjustable and comfortable. The embroidery is clean and the cap holds its shape well.",
+		),
+		(
+			18, "Summer Slide Sandals", 0.6,
+			"Decent for the beach",
+			"Comfortable footbed and grippy sole. The straps could be a bit softer, but overall good for pool and beach use.",
+		),
+		(
+			19, "Bi-fold Leather Wallet", 1.0,
+			"Sleek and functional",
+			"The RFID blocking is a great feature. Slim profile fits easily in my pocket. Leather quality is top-notch.",
+		),
+	]
+
+	count = 0
+	for user_idx, item_name, rating, title, text in reviews_data:
+		item_id = items.get(item_name)
+		if not item_id:
+			print(f"  ! Skipping review for '{item_name}' — item not found")
+			continue
+
+		user = users[user_idx]
+		existing = frappe.db.exists("Review", {"item": item_id, "user": user})
+		if existing:
+			print(f"  - {item_name} by {user} (review exists)")
+			continue
+
+		doc = frappe.get_doc({
+			"doctype": "Review",
+			"item": item_id,
+			"user": user,
+			"rating": rating,
+			"review_title": title,
+			"review_text": text,
+		})
+
+		try:
+			doc.insert(ignore_permissions=True)
+			count += 1
+			stars = int(rating * 5)
+			print(f"  + {item_name} by {user} — {'★' * stars}{'☆' * (5 - stars)} \"{title}\"")
+		except frappe.exceptions.ValidationError as e:
+			print(f"  ! {item_name} — {str(e)[:80]}")
+
+	print(f"\n  Total reviews created: {count}")
+
+
+# ---------------------------------------------------------------------------
+# 9. Wishlists (20) — one wishlist per user with 2-5 variants each
+# ---------------------------------------------------------------------------
+def _create_wishlists(users):
+	all_variants = frappe.get_all("Variants", pluck="name", order_by="creation")
+	if not all_variants:
+		print("  ! No variants found — skipping wishlists")
+		return
+
+	# Distribute variants across wishlists: each user gets 2-5 variants
+	# Cycle through variants to ensure good spread
+	variant_counts = [3, 4, 2, 5, 3, 4, 2, 3, 5, 2, 4, 3, 2, 5, 3, 4, 2, 3, 4, 5]
+	v_idx = 0
+
+	count = 0
+	for i, user in enumerate(users):
+		if frappe.db.exists("Wishlist", user):
+			print(f"  - {user} wishlist (exists)")
+			continue
+
+		num_items = variant_counts[i % len(variant_counts)]
+		picked = []
+		for _ in range(num_items):
+			picked.append(all_variants[v_idx % len(all_variants)])
+			v_idx += 1
+
+		doc = frappe.get_doc({
+			"doctype": "Wishlist",
+			"user": user,
+			"wishlist_items": [{"variant": v} for v in picked],
+		})
+
+		try:
+			doc.insert(ignore_permissions=True)
+			count += 1
+			print(f"  + {user} — {num_items} items")
+
+			# Update wishlist counts on variants
+			for v in picked:
+				current = frappe.db.get_value("Variants", v, "wishlist_count") or 0
+				frappe.db.set_value("Variants", v, "wishlist_count", current + 1, update_modified=False)
+		except frappe.exceptions.ValidationError as e:
+			print(f"  ! {user} — {str(e)[:80]}")
+
+	print(f"\n  Total wishlists created: {count}")
+
+
+# ---------------------------------------------------------------------------
+# 10. Carts (20) — one cart per user with 1-3 in-stock variants each
+# ---------------------------------------------------------------------------
+def _create_carts(users):
+	in_stock = frappe.get_all(
+		"Variants",
+		filters={"is_stock": 1},
+		fields=["name", "price"],
+		order_by="creation",
+	)
+	if not in_stock:
+		print("  ! No in-stock variants found — skipping carts")
+		return
+
+	# Each user gets 1-3 items with varying quantities
+	cart_configs = [
+		(2, [1, 2]),
+		(1, [1]),
+		(3, [1, 1, 1]),
+		(2, [2, 1]),
+		(1, [3]),
+		(2, [1, 1]),
+		(3, [2, 1, 1]),
+		(1, [2]),
+		(2, [1, 3]),
+		(3, [1, 1, 2]),
+		(1, [1]),
+		(2, [2, 2]),
+		(3, [1, 1, 1]),
+		(1, [2]),
+		(2, [1, 1]),
+		(3, [1, 2, 1]),
+		(2, [3, 1]),
+		(1, [1]),
+		(2, [1, 2]),
+		(3, [2, 1, 1]),
+	]
+
+	v_idx = 0
+	count = 0
+	for i, user in enumerate(users):
+		if frappe.db.exists("Cart", user):
+			print(f"  - {user} cart (exists)")
+			continue
+
+		num_items, quantities = cart_configs[i % len(cart_configs)]
+		cart_items = []
+		for j in range(num_items):
+			variant = in_stock[v_idx % len(in_stock)]
+			v_idx += 1
+			cart_items.append({
+				"variant": variant.name,
+				"quantity": quantities[j],
+				"rate": variant.price,
+			})
+
+		doc = frappe.get_doc({
+			"doctype": "Cart",
+			"user": user,
+			"cart_items": cart_items,
+		})
+
+		try:
+			doc.insert(ignore_permissions=True)
+			count += 1
+			print(f"  + {user} — {num_items} items, total: ₹{doc.total}")
+		except frappe.exceptions.ValidationError as e:
+			print(f"  ! {user} — {str(e)[:80]}")
+
+	print(f"\n  Total carts created: {count}")

@@ -1,9 +1,8 @@
 # Copyright (c) 2026, velora-verse and contributors
 # For license information, please see license.txt
 
-# import frappe
 from frappe.model.document import Document
 
 
-class WishlistItems(Document):
+class CartItems(Document):
 	pass

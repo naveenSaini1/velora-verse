@@ -12,6 +12,8 @@ class Variants(Document):
 
 	def before_save(self):
 		self.title = self._build_title()
+		self.validate_has_variant_values()
+		self.validate_price()
 		self.set_default_price()
 		self.validate_duplicate_variant()
 		self.validate_primary_image()
@@ -21,6 +23,14 @@ class Variants(Document):
 
 	def on_trash(self):
 		self.update_parent_stock_status()
+
+	def validate_has_variant_values(self):
+		if self.variant_name and not self.variant_values:
+			frappe.throw("At least one variant value is required.")
+
+	def validate_price(self):
+		if self.price and self.price < 0:
+			frappe.throw("Price cannot be negative.")
 
 	def _build_title(self):
 		base_name = ""
