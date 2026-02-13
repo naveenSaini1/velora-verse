@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.rate_limiter import rate_limit
 
 
 class Review(Document):
@@ -50,6 +51,7 @@ def _update_average_rating(item_name):
 
 
 @frappe.whitelist()
+@rate_limit(limit=10, seconds=60)
 def add_review(item, rating, review_title=None, review_text=None, variant=None):
 	"""Add a review for an item."""
 	if not item or not frappe.db.exists("Items", item):
@@ -62,12 +64,21 @@ def add_review(item, rating, review_title=None, review_text=None, variant=None):
 	review = frappe.new_doc("Review")
 	review.item = item
 	review.user = user
-	review.rating = float(rating)
+	# Frappe Rating field stores 0.0-1.0 (1 star=0.2, 5 stars=1.0)
+	r = float(rating)
+	review.rating = r / 5 if r > 1 else r
 	review.review_title = review_title
 	review.review_text = review_text
 	if variant:
 		review.variant = variant
 	review.save(ignore_permissions=True)
+
+	# Award review loyalty bonus
+	try:
+		from velora_verse.api.loyalty import award_review_bonus
+		award_review_bonus(user)
+	except Exception:
+		frappe.log_error(title=f"Review Loyalty Bonus Failed: {user}", message=frappe.get_traceback())
 
 	return {"message": "Review submitted", "review": review.name}
 

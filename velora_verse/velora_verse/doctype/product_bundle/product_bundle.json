@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "autoname": "VV-BDL-.#####",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bundle_name",
+  "slug",
+  "bundle_price",
+  "column_break",
+  "individual_total",
+  "savings_amount",
+  "savings_percentage",
+  "is_active",
+  "section_break_items",
+  "bundle_items",
+  "section_break_images",
+  "images"
+ ],
+ "fields": [
+  {
+   "fieldname": "bundle_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bundle Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "unique": 1
+  },
+  {
+   "fieldname": "bundle_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Bundle Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "individual_total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Individual Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "savings_amount",
+   "fieldtype": "Currency",
+   "label": "Savings Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "savings_percentage",
+   "fieldtype": "Float",
+   "label": "Savings Percentage",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bundle_items",
+   "fieldtype": "Table",
+   "label": "Bundle Items",
+   "options": "Bundle Items",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_images",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "images",
+   "fieldtype": "Table",
+   "label": "Images",
+   "options": "Images"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Product Bundle",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Store Admin",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Customer"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

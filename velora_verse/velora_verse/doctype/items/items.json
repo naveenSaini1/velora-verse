@@ -7,10 +7,13 @@
  "engine": "InnoDB",
  "field_order": [
   "item_name",
+  "slug",
   "type",
   "status",
   "in_stock",
   "has_variants",
+  "is_featured",
+  "published",
   "column_break_hvpk",
   "base_price",
   "sku",
@@ -18,6 +21,10 @@
   "review_count",
   "section_break_desc",
   "description",
+  "section_break_seo",
+  "meta_title",
+  "meta_description",
+  "hsn_code",
   "section_break_llgr",
   "item_image",
   "category"
@@ -42,6 +49,12 @@
    "fieldtype": "Data",
    "label": "SKU",
    "unique": 1
+  },
+  {
+   "fieldname": "hsn_code",
+   "fieldtype": "Link",
+   "label": "HSN Code",
+   "options": "HSN Code"
   },
   {
    "fieldname": "section_break_llgr",
@@ -91,7 +104,8 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Status",
-   "options": "Draft\nActive\nDiscontinued"
+   "options": "Draft\nActive\nDiscontinued",
+   "search_index": 1
   },
   {
    "fieldname": "section_break_desc",
@@ -117,6 +131,44 @@
    "fieldtype": "Int",
    "label": "Review Count",
    "read_only": 1
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "unique": 1,
+   "description": "URL-friendly name, auto-generated from item name"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_featured",
+   "fieldtype": "Check",
+   "label": "Is Featured"
+  },
+  {
+   "default": "1",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published",
+   "description": "Controls visibility on the storefront",
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_seo",
+   "fieldtype": "Section Break",
+   "label": "SEO",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title",
+   "length": 70
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description"
   }
  ],
  "grid_page_length": 50,
@@ -137,9 +189,37 @@
    "print": 1,
    "read": 1,
    "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Customer"
   }
  ],
  "row_format": "Dynamic",

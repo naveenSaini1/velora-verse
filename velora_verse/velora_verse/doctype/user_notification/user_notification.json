@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "notification_type",
+  "title_text",
+  "column_break_info",
+  "is_read",
+  "action_url",
+  "section_break_body",
+  "message",
+  "section_break_ref",
+  "reference_doctype",
+  "reference_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "notification_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Order\nPromotion\nBack in Stock\nReview\nLoyalty\nGift Card\nGeneral",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title_text",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_read",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Read"
+  },
+  {
+   "fieldname": "action_url",
+   "fieldtype": "Data",
+   "label": "Action URL"
+  },
+  {
+   "fieldname": "section_break_body",
+   "fieldtype": "Section Break",
+   "label": "Message"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message"
+  },
+  {
+   "fieldname": "section_break_ref",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Data",
+   "label": "Reference DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "label": "Reference Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "User Notification",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "role": "Customer"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

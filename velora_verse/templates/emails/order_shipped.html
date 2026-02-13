@@ -1,0 +1,29 @@
+<h2>Your Order Has Shipped!</h2>
+<p>Hi {{ customer_name }},</p>
+<p>Great news! Your order <strong>{{ order_name }}</strong> is on its way.</p>
+
+{% if tracking_number %}
+<div style="background:#f0f9ff;padding:16px;border-radius:8px;margin:16px 0;">
+	<p style="margin:0;"><strong>Tracking Number:</strong> {{ tracking_number }}</p>
+	{% if tracking_url %}
+	<p style="margin:8px 0 0;"><a href="{{ tracking_url }}" style="color:#3182ce;">Track your package</a></p>
+	{% endif %}
+</div>
+{% endif %}
+
+<h3>Order Summary</h3>
+<table style="width:100%;border-collapse:collapse;margin:8px 0;">
+	{% for item in items %}
+	<tr>
+		<td style="padding:6px 0;">{{ item.variant_title }} x {{ item.quantity }}</td>
+		<td style="padding:6px 0;text-align:right;">{{ item.amount }}</td>
+	</tr>
+	{% endfor %}
+	<tr style="border-top:1px solid #ddd;font-weight:bold;">
+		<td style="padding:8px 0;">Total</td>
+		<td style="padding:8px 0;text-align:right;">{{ total }}</td>
+	</tr>
+</table>
+
+<p><strong>Shipping to:</strong><br>{{ shipping_address | replace("\n", "<br>") }}</p>
+<p>Thanks for shopping with {{ store_name }}!</p>

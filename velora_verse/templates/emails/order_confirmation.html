@@ -1,0 +1,36 @@
+<h2>Order Confirmed!</h2>
+<p>Hi {{ customer_name }},</p>
+<p>Thank you for your order. Here are your order details:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:16px 0;">
+	<tr style="background:#f5f5f5;">
+		<th style="padding:8px;text-align:left;border:1px solid #ddd;">Item</th>
+		<th style="padding:8px;text-align:center;border:1px solid #ddd;">Qty</th>
+		<th style="padding:8px;text-align:right;border:1px solid #ddd;">Rate</th>
+		<th style="padding:8px;text-align:right;border:1px solid #ddd;">Amount</th>
+	</tr>
+	{% for item in items %}
+	<tr>
+		<td style="padding:8px;border:1px solid #ddd;">{{ item.variant_title }}</td>
+		<td style="padding:8px;text-align:center;border:1px solid #ddd;">{{ item.quantity }}</td>
+		<td style="padding:8px;text-align:right;border:1px solid #ddd;">{{ item.rate }}</td>
+		<td style="padding:8px;text-align:right;border:1px solid #ddd;">{{ item.amount }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+<table style="width:300px;margin-left:auto;">
+	<tr><td style="padding:4px;">Subtotal:</td><td style="padding:4px;text-align:right;">{{ subtotal }}</td></tr>
+	{% if discount_amount %}<tr><td style="padding:4px;">Discount:</td><td style="padding:4px;text-align:right;color:#e53e3e;">-{{ discount_amount }}</td></tr>{% endif %}
+	{% if tax_amount %}<tr><td style="padding:4px;">Tax ({{ tax_rate }}% GST):</td><td style="padding:4px;text-align:right;">{{ tax_amount }}</td></tr>{% endif %}
+	{% if shipping_charge %}<tr><td style="padding:4px;">Shipping:</td><td style="padding:4px;text-align:right;">{{ shipping_charge }}</td></tr>{% endif %}
+	<tr style="font-weight:bold;border-top:2px solid #333;"><td style="padding:8px 4px;">Total:</td><td style="padding:8px 4px;text-align:right;">{{ total }}</td></tr>
+</table>
+
+<p style="margin-top:16px;"><strong>Order ID:</strong> {{ order_name }}<br>
+<strong>Payment:</strong> {{ payment_method }} ({{ payment_status }})</p>
+
+<p><strong>Shipping to:</strong><br>{{ shipping_address | replace("\n", "<br>") }}</p>
+
+<p>We'll notify you when your order ships.</p>
+<p>Thanks for shopping with {{ store_name }}!</p>

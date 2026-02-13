@@ -13,6 +13,7 @@ class Items(Document):
 		self.validate_sku_format()
 		self.validate_primary_image()
 		self.validate_duplicate_categories()
+		self.generate_slug()
 
 	def on_trash(self):
 		self.validate_no_variants()
@@ -57,6 +58,25 @@ class Items(Document):
 			frappe.throw(
 				f"Cannot delete '{self.item_name}': it has {variants} variant(s). Delete them first."
 			)
+
+	def generate_slug(self):
+		if not self.slug and self.item_name:
+			slug = _slugify(self.item_name)
+			# Ensure uniqueness
+			existing = frappe.db.get_value("Items", {"slug": slug, "name": ["!=", self.name]})
+			if existing:
+				slug = f"{slug}-{self.name.lower()}"
+			self.slug = slug
+
+
+def _slugify(text):
+	"""Convert text to URL-friendly slug."""
+	import re
+
+	text = text.lower().strip()
+	text = re.sub(r"[^\w\s-]", "", text)
+	text = re.sub(r"[-\s]+", "-", text)
+	return text.strip("-")
 
 
 @frappe.whitelist()

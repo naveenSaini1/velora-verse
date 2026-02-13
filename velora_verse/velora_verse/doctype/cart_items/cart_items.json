@@ -10,7 +10,9 @@
   "column_break_info",
   "quantity",
   "rate",
-  "amount"
+  "amount",
+  "is_bundle_item",
+  "bundle_reference"
  ],
  "fields": [
   {
@@ -56,6 +58,17 @@
    "in_list_view": 1,
    "label": "Amount",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_bundle_item",
+   "fieldtype": "Check",
+   "label": "Is Bundle Item"
+  },
+  {
+   "fieldname": "bundle_reference",
+   "fieldtype": "Data",
+   "label": "Bundle Reference"
   }
  ],
  "grid_page_length": 50,

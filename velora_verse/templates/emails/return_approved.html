@@ -1,0 +1,28 @@
+<h2>Return Request Approved</h2>
+<p>Hi {{ customer_name }},</p>
+<p>Your return request <strong>{{ return_name }}</strong> for order <strong>{{ order_name }}</strong> has been approved.</p>
+
+<p><strong>Return Type:</strong> {{ return_type }}<br>
+<strong>Reason:</strong> {{ reason }}</p>
+
+{% if admin_notes %}
+<p><strong>Admin Notes:</strong> {{ admin_notes }}</p>
+{% endif %}
+
+<h3>Items Being Returned</h3>
+<table style="width:100%;border-collapse:collapse;margin:8px 0;">
+	{% for item in items %}
+	<tr>
+		<td style="padding:6px 0;">{{ item.variant_title }} x {{ item.quantity }}</td>
+		<td style="padding:6px 0;text-align:right;">{{ item.amount }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% if refund_amount %}
+<p><strong>Refund Amount:</strong> {{ refund_amount }}<br>
+<strong>Refund Method:</strong> {{ refund_method }}</p>
+{% endif %}
+
+<p>Please ship the items back within 7 days. We'll process your refund once we receive and inspect the returned items.</p>
+<p>{{ store_name }}</p>

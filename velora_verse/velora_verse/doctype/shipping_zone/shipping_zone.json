@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "istable": 1,
+ "field_order": [
+  "zone_name",
+  "states",
+  "column_break_zone",
+  "flat_rate",
+  "rate_per_kg",
+  "free_shipping_threshold"
+ ],
+ "fields": [
+  {
+   "fieldname": "zone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Zone Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "states",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "States",
+   "description": "Comma-separated state names (e.g., Maharashtra, Goa, Gujarat)"
+  },
+  {
+   "fieldname": "column_break_zone",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "flat_rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Flat Rate"
+  },
+  {
+   "default": "0",
+   "fieldname": "rate_per_kg",
+   "fieldtype": "Currency",
+   "label": "Rate per Kg"
+  },
+  {
+   "default": "0",
+   "fieldname": "free_shipping_threshold",
+   "fieldtype": "Currency",
+   "label": "Free Shipping Threshold",
+   "description": "Override global threshold for this zone. 0 = use global."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Shipping Zone",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

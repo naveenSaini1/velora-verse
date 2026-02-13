@@ -1,0 +1,14 @@
+<h2>Refund Processed</h2>
+<p>Hi {{ customer_name }},</p>
+<p>A refund has been processed for your return request <strong>{{ return_name }}</strong> (Order: <strong>{{ order_name }}</strong>).</p>
+
+{% if refund_amount %}
+<div style="background:#f0fff4;padding:16px;border-radius:8px;margin:16px 0;">
+	<p style="margin:0;font-size:18px;"><strong>Refund Amount:</strong> {{ refund_amount }}</p>
+	<p style="margin:8px 0 0;"><strong>Refund Method:</strong> {{ refund_method }}</p>
+</div>
+{% endif %}
+
+<p>Please allow 5-7 business days for the refund to reflect in your account.</p>
+<p>Thanks for your patience.</p>
+<p>{{ store_name }}</p>

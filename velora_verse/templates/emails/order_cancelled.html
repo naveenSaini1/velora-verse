@@ -1,0 +1,28 @@
+<h2>Order Cancelled</h2>
+<p>Hi {{ customer_name }},</p>
+<p>Your order <strong>{{ order_name }}</strong> has been cancelled.</p>
+
+{% if cancelled_reason %}
+<p><strong>Reason:</strong> {{ cancelled_reason }}</p>
+{% endif %}
+
+<h3>Order Summary</h3>
+<table style="width:100%;border-collapse:collapse;margin:8px 0;">
+	{% for item in items %}
+	<tr>
+		<td style="padding:6px 0;">{{ item.variant_title }} x {{ item.quantity }}</td>
+		<td style="padding:6px 0;text-align:right;">{{ item.amount }}</td>
+	</tr>
+	{% endfor %}
+	<tr style="border-top:1px solid #ddd;font-weight:bold;">
+		<td style="padding:8px 0;">Total</td>
+		<td style="padding:8px 0;text-align:right;">{{ total }}</td>
+	</tr>
+</table>
+
+{% if payment_status == "Paid" %}
+<p>A refund will be processed to your original payment method within 5-7 business days.</p>
+{% endif %}
+
+<p>If you have any questions, please contact us.</p>
+<p>{{ store_name }}</p>

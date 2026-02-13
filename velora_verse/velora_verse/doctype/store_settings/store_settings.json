@@ -1,0 +1,581 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "issingle": 1,
+ "field_order": [
+  "general_section",
+  "store_name",
+  "store_email",
+  "store_phone",
+  "column_break_general",
+  "store_logo",
+  "currency",
+  "currency_symbol",
+  "section_break_gst",
+  "enable_gst",
+  "gstin",
+  "column_break_gst",
+  "gst_rate",
+  "gst_included_in_price",
+  "section_break_shipping",
+  "enable_shipping_charges",
+  "free_shipping_threshold",
+  "column_break_shipping",
+  "default_shipping_charge",
+  "shipping_rate_per_kg",
+  "enable_pincode_check",
+  "section_break_shipping_zones",
+  "shipping_zones",
+  "section_break_order",
+  "min_order_value",
+  "auto_cancel_unpaid_hours",
+  "column_break_order",
+  "cod_enabled",
+  "section_break_razorpay",
+  "razorpay_enabled",
+  "razorpay_key_id",
+  "column_break_razorpay",
+  "razorpay_key_secret",
+  "razorpay_webhook_secret",
+  "section_break_email",
+  "send_order_confirmation",
+  "send_shipping_notification",
+  "column_break_email",
+  "send_delivery_confirmation",
+  "order_email_cc",
+  "section_break_abandoned_cart",
+  "enable_abandoned_cart_email",
+  "column_break_abandoned_cart",
+  "abandoned_cart_hours",
+  "section_break_stock",
+  "low_stock_threshold",
+  "enable_low_stock_alerts",
+  "column_break_stock",
+  "low_stock_alert_email",
+  "section_break_hsn",
+  "enable_hsn_tax",
+  "store_state",
+  "section_break_sitemap",
+  "site_base_url",
+  "sitemap_change_frequency",
+  "column_break_sitemap",
+  "sitemap_include_images",
+  "section_break_analytics",
+  "enable_analytics",
+  "section_break_loyalty",
+  "enable_loyalty_points",
+  "points_to_currency_ratio",
+  "min_points_to_redeem",
+  "column_break_loyalty",
+  "max_points_per_order",
+  "points_expiry_days",
+  "section_break_segments",
+  "enable_customer_segments",
+  "section_break_gift_cards",
+  "enable_gift_cards",
+  "gift_card_expiry_months",
+  "column_break_gift_cards",
+  "gift_card_denominations",
+  "section_break_warehouse",
+  "enable_multi_warehouse",
+  "default_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "general_section",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "default": "Velora Verse",
+   "fieldname": "store_name",
+   "fieldtype": "Data",
+   "label": "Store Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "store_email",
+   "fieldtype": "Data",
+   "label": "Store Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "store_phone",
+   "fieldtype": "Data",
+   "label": "Store Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_general",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "store_logo",
+   "fieldtype": "Attach Image",
+   "label": "Store Logo"
+  },
+  {
+   "default": "INR",
+   "fieldname": "currency",
+   "fieldtype": "Data",
+   "label": "Currency"
+  },
+  {
+   "default": "Rs.",
+   "fieldname": "currency_symbol",
+   "fieldtype": "Data",
+   "label": "Currency Symbol"
+  },
+  {
+   "fieldname": "section_break_gst",
+   "fieldtype": "Section Break",
+   "label": "GST Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_gst",
+   "fieldtype": "Check",
+   "label": "Enable GST"
+  },
+  {
+   "fieldname": "gstin",
+   "fieldtype": "Data",
+   "label": "GSTIN",
+   "depends_on": "eval:doc.enable_gst"
+  },
+  {
+   "fieldname": "column_break_gst",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "18",
+   "fieldname": "gst_rate",
+   "fieldtype": "Float",
+   "label": "GST Rate (%)",
+   "depends_on": "eval:doc.enable_gst"
+  },
+  {
+   "default": "1",
+   "fieldname": "gst_included_in_price",
+   "fieldtype": "Check",
+   "label": "GST Included in Price",
+   "description": "If checked, listed prices already include GST",
+   "depends_on": "eval:doc.enable_gst"
+  },
+  {
+   "fieldname": "section_break_shipping",
+   "fieldtype": "Section Break",
+   "label": "Shipping Settings"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_shipping_charges",
+   "fieldtype": "Check",
+   "label": "Enable Shipping Charges"
+  },
+  {
+   "default": "500",
+   "fieldname": "free_shipping_threshold",
+   "fieldtype": "Currency",
+   "label": "Free Shipping Threshold",
+   "description": "Orders above this amount get free shipping. 0 = no free shipping.",
+   "depends_on": "eval:doc.enable_shipping_charges"
+  },
+  {
+   "fieldname": "column_break_shipping",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "50",
+   "fieldname": "default_shipping_charge",
+   "fieldtype": "Currency",
+   "label": "Default Shipping Charge",
+   "depends_on": "eval:doc.enable_shipping_charges"
+  },
+  {
+   "default": "20",
+   "fieldname": "shipping_rate_per_kg",
+   "fieldtype": "Currency",
+   "label": "Shipping Rate per Kg",
+   "depends_on": "eval:doc.enable_shipping_charges"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_pincode_check",
+   "fieldtype": "Check",
+   "label": "Enable Pincode Serviceability Check",
+   "description": "Require delivery pincode to be in the serviceable list before checkout"
+  },
+  {
+   "fieldname": "section_break_shipping_zones",
+   "fieldtype": "Section Break",
+   "label": "Shipping Zones",
+   "depends_on": "eval:doc.enable_shipping_charges",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "shipping_zones",
+   "fieldtype": "Table",
+   "label": "Shipping Zones",
+   "options": "Shipping Zone"
+  },
+  {
+   "fieldname": "section_break_order",
+   "fieldtype": "Section Break",
+   "label": "Order Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_order_value",
+   "fieldtype": "Currency",
+   "label": "Minimum Order Value",
+   "description": "0 = no minimum"
+  },
+  {
+   "default": "24",
+   "fieldname": "auto_cancel_unpaid_hours",
+   "fieldtype": "Int",
+   "label": "Auto-Cancel Unpaid Orders (Hours)",
+   "description": "Cancel unpaid online orders after this many hours. 0 = disabled."
+  },
+  {
+   "fieldname": "column_break_order",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "cod_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Cash on Delivery"
+  },
+  {
+   "fieldname": "section_break_razorpay",
+   "fieldtype": "Section Break",
+   "label": "Razorpay Settings",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "razorpay_enabled",
+   "fieldtype": "Check",
+   "label": "Enable Razorpay"
+  },
+  {
+   "fieldname": "razorpay_key_id",
+   "fieldtype": "Data",
+   "label": "Razorpay Key ID",
+   "depends_on": "eval:doc.razorpay_enabled"
+  },
+  {
+   "fieldname": "column_break_razorpay",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "razorpay_key_secret",
+   "fieldtype": "Password",
+   "label": "Razorpay Key Secret",
+   "depends_on": "eval:doc.razorpay_enabled"
+  },
+  {
+   "fieldname": "razorpay_webhook_secret",
+   "fieldtype": "Password",
+   "label": "Razorpay Webhook Secret",
+   "depends_on": "eval:doc.razorpay_enabled"
+  },
+  {
+   "fieldname": "section_break_email",
+   "fieldtype": "Section Break",
+   "label": "Email Notifications",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "send_order_confirmation",
+   "fieldtype": "Check",
+   "label": "Send Order Confirmation"
+  },
+  {
+   "default": "1",
+   "fieldname": "send_shipping_notification",
+   "fieldtype": "Check",
+   "label": "Send Shipping Notification"
+  },
+  {
+   "fieldname": "column_break_email",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "send_delivery_confirmation",
+   "fieldtype": "Check",
+   "label": "Send Delivery Confirmation"
+  },
+  {
+   "fieldname": "order_email_cc",
+   "fieldtype": "Data",
+   "label": "Order Email CC",
+   "description": "CC this email on all order notifications",
+   "options": "Email"
+  },
+  {
+   "fieldname": "section_break_abandoned_cart",
+   "fieldtype": "Section Break",
+   "label": "Abandoned Cart Recovery",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_abandoned_cart_email",
+   "fieldtype": "Check",
+   "label": "Enable Abandoned Cart Emails",
+   "description": "Send reminder emails when customers leave items in cart"
+  },
+  {
+   "fieldname": "column_break_abandoned_cart",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "48",
+   "fieldname": "abandoned_cart_hours",
+   "fieldtype": "Int",
+   "label": "Abandoned Cart Hours",
+   "description": "Hours before cart is considered abandoned",
+   "depends_on": "eval:doc.enable_abandoned_cart_email"
+  },
+  {
+   "fieldname": "section_break_stock",
+   "fieldtype": "Section Break",
+   "label": "Stock Alerts",
+   "collapsible": 1
+  },
+  {
+   "default": "5",
+   "fieldname": "low_stock_threshold",
+   "fieldtype": "Int",
+   "label": "Low Stock Threshold",
+   "description": "Alert when variant stock falls below this"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_low_stock_alerts",
+   "fieldtype": "Check",
+   "label": "Enable Low Stock Alerts"
+  },
+  {
+   "fieldname": "column_break_stock",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "low_stock_alert_email",
+   "fieldtype": "Data",
+   "label": "Low Stock Alert Email",
+   "description": "Email to receive low stock alerts",
+   "options": "Email"
+  },
+  {
+   "fieldname": "section_break_hsn",
+   "fieldtype": "Section Break",
+   "label": "HSN/GST Tax",
+   "collapsible": 1,
+   "depends_on": "eval:doc.enable_gst"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_hsn_tax",
+   "fieldtype": "Check",
+   "label": "Enable HSN-Based Tax",
+   "description": "Use per-item HSN codes for tax rates instead of a single GST rate"
+  },
+  {
+   "fieldname": "store_state",
+   "fieldtype": "Data",
+   "label": "Store State",
+   "description": "State where the store is registered (for CGST/SGST vs IGST determination)"
+  },
+  {
+   "fieldname": "section_break_sitemap",
+   "fieldtype": "Section Break",
+   "label": "SEO / Sitemap",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "site_base_url",
+   "fieldtype": "Data",
+   "label": "Site Base URL",
+   "description": "Base URL for sitemap generation, e.g. https://veloraverse.com"
+  },
+  {
+   "default": "weekly",
+   "fieldname": "sitemap_change_frequency",
+   "fieldtype": "Select",
+   "label": "Sitemap Change Frequency",
+   "options": "daily\nweekly\nmonthly"
+  },
+  {
+   "fieldname": "column_break_sitemap",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sitemap_include_images",
+   "fieldtype": "Check",
+   "label": "Include Images in Sitemap"
+  },
+  {
+   "fieldname": "section_break_analytics",
+   "fieldtype": "Section Break",
+   "label": "Analytics",
+   "collapsible": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_analytics",
+   "fieldtype": "Check",
+   "label": "Enable Analytics Tracking"
+  },
+  {
+   "fieldname": "section_break_loyalty",
+   "fieldtype": "Section Break",
+   "label": "Loyalty Points",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_loyalty_points",
+   "fieldtype": "Check",
+   "label": "Enable Loyalty Points"
+  },
+  {
+   "default": "10",
+   "fieldname": "points_to_currency_ratio",
+   "fieldtype": "Int",
+   "label": "Points to Currency Ratio",
+   "description": "How many points equal 1 currency unit",
+   "depends_on": "eval:doc.enable_loyalty_points"
+  },
+  {
+   "default": "100",
+   "fieldname": "min_points_to_redeem",
+   "fieldtype": "Int",
+   "label": "Min Points to Redeem",
+   "depends_on": "eval:doc.enable_loyalty_points"
+  },
+  {
+   "fieldname": "column_break_loyalty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "max_points_per_order",
+   "fieldtype": "Int",
+   "label": "Max Points per Order",
+   "description": "0 = unlimited",
+   "depends_on": "eval:doc.enable_loyalty_points"
+  },
+  {
+   "default": "365",
+   "fieldname": "points_expiry_days",
+   "fieldtype": "Int",
+   "label": "Points Expiry (Days)",
+   "depends_on": "eval:doc.enable_loyalty_points"
+  },
+  {
+   "fieldname": "section_break_segments",
+   "fieldtype": "Section Break",
+   "label": "Customer Segments",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_customer_segments",
+   "fieldtype": "Check",
+   "label": "Enable Customer Segments"
+  },
+  {
+   "fieldname": "section_break_gift_cards",
+   "fieldtype": "Section Break",
+   "label": "Gift Cards",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_gift_cards",
+   "fieldtype": "Check",
+   "label": "Enable Gift Cards"
+  },
+  {
+   "default": "12",
+   "fieldname": "gift_card_expiry_months",
+   "fieldtype": "Int",
+   "label": "Gift Card Expiry (Months)",
+   "depends_on": "eval:doc.enable_gift_cards"
+  },
+  {
+   "fieldname": "column_break_gift_cards",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gift_card_denominations",
+   "fieldtype": "Data",
+   "label": "Gift Card Denominations",
+   "description": "Comma-separated amounts, e.g. 500,1000,2000,5000. Leave blank for any amount.",
+   "depends_on": "eval:doc.enable_gift_cards"
+  },
+  {
+   "fieldname": "section_break_warehouse",
+   "fieldtype": "Section Break",
+   "label": "Multi-Warehouse",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_multi_warehouse",
+   "fieldtype": "Check",
+   "label": "Enable Multi-Warehouse"
+  },
+  {
+   "fieldname": "default_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Warehouse",
+   "options": "Warehouse",
+   "depends_on": "eval:doc.enable_multi_warehouse"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Store Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "role": "Store Admin"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,429 @@
+{
+ "actions": [],
+ "autoname": "VV-ORD-.#####",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "field_order": [
+  "user",
+  "order_date",
+  "status",
+  "column_break_info",
+  "payment_status",
+  "payment_method",
+  "payment_id",
+  "section_break_address",
+  "shipping_address",
+  "shipping_address_display",
+  "column_break_address",
+  "billing_address",
+  "billing_address_display",
+  "section_break_items",
+  "order_items",
+  "section_break_totals",
+  "subtotal",
+  "coupon_code",
+  "discount_amount",
+  "column_break_totals",
+  "tax_rate",
+  "tax_amount",
+  "shipping_charge",
+  "total",
+  "section_break_loyalty",
+  "loyalty_points_redeemed",
+  "loyalty_discount",
+  "column_break_loyalty",
+  "loyalty_points_earned",
+  "section_break_segment",
+  "segment_name",
+  "segment_discount",
+  "section_break_gift_card",
+  "gift_card_code",
+  "gift_card_amount",
+  "section_break_hsn_gst",
+  "is_igst",
+  "cgst_amount",
+  "sgst_amount",
+  "column_break_hsn_gst",
+  "igst_amount",
+  "cess_amount",
+  "section_break_shipping",
+  "tracking_number",
+  "tracking_url",
+  "delivered_on",
+  "section_break_notes",
+  "notes",
+  "cancelled_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "default": "Now",
+   "fieldname": "order_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Order Date",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nConfirmed\nProcessing\nShipped\nDelivered\nCancelled\nReturned",
+   "reqd": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Unpaid",
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Status",
+   "options": "Unpaid\nPaid\nRefunded\nPartially Refunded",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Data",
+   "label": "Payment Method"
+  },
+  {
+   "fieldname": "payment_id",
+   "fieldtype": "Data",
+   "label": "Payment ID"
+  },
+  {
+   "fieldname": "section_break_address",
+   "fieldtype": "Section Break",
+   "label": "Addresses"
+  },
+  {
+   "fieldname": "shipping_address",
+   "fieldtype": "Link",
+   "label": "Shipping Address",
+   "options": "Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shipping_address_display",
+   "fieldtype": "Small Text",
+   "label": "Shipping Address Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_address",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "billing_address",
+   "fieldtype": "Link",
+   "label": "Billing Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "billing_address_display",
+   "fieldtype": "Small Text",
+   "label": "Billing Address Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "order_items",
+   "fieldtype": "Table",
+   "label": "Order Items",
+   "options": "Order Items",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_totals",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "subtotal",
+   "fieldtype": "Currency",
+   "label": "Subtotal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "coupon_code",
+   "fieldtype": "Link",
+   "label": "Coupon Code",
+   "options": "Coupon"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Discount Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_totals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_rate",
+   "fieldtype": "Float",
+   "label": "Tax Rate (%)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "shipping_charge",
+   "fieldtype": "Currency",
+   "label": "Shipping Charge",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_loyalty",
+   "fieldtype": "Section Break",
+   "label": "Loyalty Points",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "loyalty_points_redeemed",
+   "fieldtype": "Int",
+   "label": "Loyalty Points Redeemed",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "loyalty_discount",
+   "fieldtype": "Currency",
+   "label": "Loyalty Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_loyalty",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "loyalty_points_earned",
+   "fieldtype": "Int",
+   "label": "Loyalty Points Earned",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_segment",
+   "fieldtype": "Section Break",
+   "label": "Customer Segment",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "segment_name",
+   "fieldtype": "Data",
+   "label": "Customer Segment",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "segment_discount",
+   "fieldtype": "Currency",
+   "label": "Segment Discount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_gift_card",
+   "fieldtype": "Section Break",
+   "label": "Gift Card",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "gift_card_code",
+   "fieldtype": "Data",
+   "label": "Gift Card Code"
+  },
+  {
+   "default": "0",
+   "fieldname": "gift_card_amount",
+   "fieldtype": "Currency",
+   "label": "Gift Card Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_hsn_gst",
+   "fieldtype": "Section Break",
+   "label": "GST Breakdown",
+   "collapsible": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_igst",
+   "fieldtype": "Check",
+   "label": "Is IGST",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cgst_amount",
+   "fieldtype": "Currency",
+   "label": "CGST Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sgst_amount",
+   "fieldtype": "Currency",
+   "label": "SGST Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hsn_gst",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "igst_amount",
+   "fieldtype": "Currency",
+   "label": "IGST Amount",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cess_amount",
+   "fieldtype": "Currency",
+   "label": "Cess Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_shipping",
+   "fieldtype": "Section Break",
+   "label": "Shipping"
+  },
+  {
+   "fieldname": "tracking_number",
+   "fieldtype": "Data",
+   "label": "Tracking Number",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "tracking_url",
+   "fieldtype": "Data",
+   "label": "Tracking URL",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "delivered_on",
+   "fieldtype": "Datetime",
+   "label": "Delivered On",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "cancelled_reason",
+   "fieldtype": "Text",
+   "label": "Cancellation Reason",
+   "allow_on_submit": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Order",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin",
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Customer",
+   "submit": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "user"
+}

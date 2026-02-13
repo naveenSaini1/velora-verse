@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "variant",
+  "change_type",
+  "quantity_change",
+  "column_break_info",
+  "previous_qty",
+  "new_qty",
+  "section_break_ref",
+  "reference_type",
+  "reference_name",
+  "created_by",
+  "warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "variant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Variant",
+   "options": "Variants",
+   "reqd": 1
+  },
+  {
+   "fieldname": "change_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Change Type",
+   "options": "Sale\nRestock\nAdjustment\nReturn\nReservation\nRelease",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity_change",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity Change",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "previous_qty",
+   "fieldtype": "Int",
+   "label": "Previous Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "New Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ref",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "reference_type",
+   "fieldtype": "Data",
+   "label": "Reference Type"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "label": "Reference Name"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Inventory Log",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin"
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

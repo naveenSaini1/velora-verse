@@ -117,13 +117,37 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"Address": "velora_verse.services.permissions.address_permission_query",
+	"Cart": "velora_verse.services.permissions.cart_permission_query",
+	"Wishlist": "velora_verse.services.permissions.wishlist_permission_query",
+	"Review": "velora_verse.services.permissions.review_permission_query",
+	"Order": "velora_verse.services.permissions.order_permission_query",
+	"Payment Log": "velora_verse.services.permissions.payment_log_permission_query",
+	"Inventory Log": "velora_verse.services.permissions.inventory_log_permission_query",
+	"Return Request": "velora_verse.services.permissions.return_request_permission_query",
+	"Stock Notification": "velora_verse.services.permissions.stock_notification_permission_query",
+	"Recent View": "velora_verse.services.permissions.recent_view_permission_query",
+	"User Notification": "velora_verse.services.permissions.user_notification_permission_query",
+	"Loyalty Points Ledger": "velora_verse.services.permissions.loyalty_points_ledger_permission_query",
+	"Gift Card": "velora_verse.services.permissions.gift_card_permission_query",
+}
+
+has_permission = {
+	"Address": "velora_verse.services.permissions.address_has_permission",
+	"Cart": "velora_verse.services.permissions.cart_has_permission",
+	"Wishlist": "velora_verse.services.permissions.wishlist_has_permission",
+	"Review": "velora_verse.services.permissions.review_has_permission",
+	"Order": "velora_verse.services.permissions.order_has_permission",
+	"Payment Log": "velora_verse.services.permissions.payment_log_has_permission",
+	"Inventory Log": "velora_verse.services.permissions.inventory_log_has_permission",
+	"Return Request": "velora_verse.services.permissions.return_request_has_permission",
+	"Stock Notification": "velora_verse.services.permissions.stock_notification_has_permission",
+	"Recent View": "velora_verse.services.permissions.recent_view_has_permission",
+	"User Notification": "velora_verse.services.permissions.user_notification_has_permission",
+	"Loyalty Points Ledger": "velora_verse.services.permissions.loyalty_points_ledger_has_permission",
+	"Gift Card": "velora_verse.services.permissions.gift_card_has_permission",
+}
 
 # DocType Class
 # ---------------
@@ -137,34 +161,47 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Variants": {
+		"on_update": "velora_verse.services.doc_events.variant_on_update",
+	},
+	"Order": {
+		"on_update_after_submit": "velora_verse.services.doc_events.order_on_update_after_submit",
+	},
+	"Category": {
+		"on_update": "velora_verse.services.doc_events.clear_category_cache",
+		"on_trash": "velora_verse.services.doc_events.clear_category_cache",
+	},
+	"Items": {
+		"on_update": "velora_verse.services.doc_events.clear_product_filters_cache",
+		"on_trash": "velora_verse.services.doc_events.clear_product_filters_cache",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"velora_verse.tasks.all"
-# 	],
-# 	"daily": [
-# 		"velora_verse.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"velora_verse.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"velora_verse.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"velora_verse.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"cron": {
+		"*/5 * * * *": [
+			"velora_verse.services.tasks.activate_deactivate_promotions",
+		],
+	},
+	"hourly": [
+		"velora_verse.services.tasks.cancel_unpaid_orders",
+	],
+	"daily": [
+		"velora_verse.services.tasks.check_low_stock",
+		"velora_verse.services.tasks.check_back_in_stock",
+		"velora_verse.services.tasks.cleanup_old_views",
+		"velora_verse.services.tasks.send_abandoned_cart_emails",
+		"velora_verse.services.tasks.expire_loyalty_points",
+		"velora_verse.services.tasks.expire_gift_cards",
+		"velora_verse.services.tasks.reassign_customer_segments",
+		"velora_verse.services.tasks.cleanup_notifications",
+		"velora_verse.services.tasks.cleanup_analytics",
+	],
+}
 
 # Testing
 # -------

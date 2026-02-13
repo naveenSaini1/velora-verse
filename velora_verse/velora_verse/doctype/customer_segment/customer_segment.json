@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "autoname": "field:segment_name",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "segment_name",
+  "segment_type",
+  "is_active",
+  "column_break",
+  "discount_percentage",
+  "loyalty_multiplier",
+  "section_break_rules",
+  "min_total_spent",
+  "min_order_count",
+  "column_break_rules",
+  "min_avg_order_value",
+  "days_since_last_order",
+  "section_break_members",
+  "segment_members"
+ ],
+ "fields": [
+  {
+   "fieldname": "segment_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Segment Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Automatic",
+   "fieldname": "segment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Segment Type",
+   "options": "Manual\nAutomatic"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_percentage",
+   "fieldtype": "Float",
+   "label": "Discount Percentage"
+  },
+  {
+   "default": "1.0",
+   "fieldname": "loyalty_multiplier",
+   "fieldtype": "Float",
+   "label": "Loyalty Multiplier"
+  },
+  {
+   "depends_on": "eval:doc.segment_type=='Automatic'",
+   "fieldname": "section_break_rules",
+   "fieldtype": "Section Break",
+   "label": "Auto-Assignment Rules"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_total_spent",
+   "fieldtype": "Currency",
+   "label": "Min Total Spent"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_order_count",
+   "fieldtype": "Int",
+   "label": "Min Order Count"
+  },
+  {
+   "fieldname": "column_break_rules",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_avg_order_value",
+   "fieldtype": "Currency",
+   "label": "Min Avg Order Value"
+  },
+  {
+   "default": "0",
+   "description": "Max days since last order, 0 = no limit",
+   "fieldname": "days_since_last_order",
+   "fieldtype": "Int",
+   "label": "Days Since Last Order"
+  },
+  {
+   "fieldname": "section_break_members",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "segment_members",
+   "fieldtype": "Table",
+   "label": "Segment Members",
+   "options": "Segment Members"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Customer Segment",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Store Admin",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

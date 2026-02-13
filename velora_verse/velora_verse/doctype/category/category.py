@@ -8,6 +8,7 @@ from frappe.model.document import Document
 class Category(Document):
 	def validate(self):
 		self.validate_circular_reference()
+		self.generate_slug()
 
 	def on_trash(self):
 		self.validate_no_children()
@@ -38,3 +39,21 @@ class Category(Document):
 		items = frappe.db.count("Item Category", {"category": self.name})
 		if items:
 			frappe.throw(f"Cannot delete '{self.name}': it is assigned to {items} items. Remove the assignment first.")
+
+	def generate_slug(self):
+		if not self.slug and self.category_name:
+			slug = _slugify(self.category_name)
+			existing = frappe.db.get_value("Category", {"slug": slug, "name": ["!=", self.name]})
+			if existing:
+				slug = f"{slug}-{self.name.lower()}"
+			self.slug = slug
+
+
+def _slugify(text):
+	"""Convert text to URL-friendly slug."""
+	import re
+
+	text = text.lower().strip()
+	text = re.sub(r"[^\w\s-]", "", text)
+	text = re.sub(r"[-\s]+", "-", text)
+	return text.strip("-")

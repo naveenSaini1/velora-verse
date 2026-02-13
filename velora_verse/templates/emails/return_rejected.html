@@ -1,0 +1,12 @@
+<h2>Return Request Update</h2>
+<p>Hi {{ customer_name }},</p>
+<p>We've reviewed your return request <strong>{{ return_name }}</strong> for order <strong>{{ order_name }}</strong>.</p>
+
+<p>Unfortunately, we're unable to approve this return request.</p>
+
+{% if admin_notes %}
+<p><strong>Reason:</strong> {{ admin_notes }}</p>
+{% endif %}
+
+<p>If you believe this was an error or have additional information, please contact our support team.</p>
+<p>{{ store_name }}</p>

@@ -1,0 +1,189 @@
+{
+ "actions": [],
+ "autoname": "field:coupon_code",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "coupon_code",
+  "description",
+  "is_active",
+  "column_break_info",
+  "discount_type",
+  "discount_value",
+  "max_discount",
+  "section_break_limits",
+  "min_order_value",
+  "usage_limit",
+  "used_count",
+  "column_break_limits",
+  "per_user_limit",
+  "valid_from",
+  "valid_to",
+  "section_break_scope",
+  "applicable_items"
+ ],
+ "fields": [
+  {
+   "fieldname": "coupon_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Coupon Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Percentage",
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Discount Type",
+   "options": "Percentage\nFlat",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discount_value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Discount Value",
+   "reqd": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "max_discount",
+   "fieldtype": "Currency",
+   "label": "Max Discount",
+   "description": "Maximum discount amount (for percentage type)"
+  },
+  {
+   "fieldname": "section_break_limits",
+   "fieldtype": "Section Break",
+   "label": "Limits & Validity"
+  },
+  {
+   "default": "0",
+   "fieldname": "min_order_value",
+   "fieldtype": "Currency",
+   "label": "Minimum Order Value"
+  },
+  {
+   "default": "0",
+   "fieldname": "usage_limit",
+   "fieldtype": "Int",
+   "label": "Total Usage Limit",
+   "description": "0 = unlimited"
+  },
+  {
+   "default": "0",
+   "fieldname": "used_count",
+   "fieldtype": "Int",
+   "label": "Used Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_limits",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "per_user_limit",
+   "fieldtype": "Int",
+   "label": "Per User Limit",
+   "description": "Max uses per user. 0 = unlimited"
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Datetime",
+   "label": "Valid From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Datetime",
+   "label": "Valid To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_scope",
+   "fieldtype": "Section Break",
+   "label": "Applicable Items",
+   "description": "Leave empty to apply to all items"
+  },
+  {
+   "fieldname": "applicable_items",
+   "fieldtype": "Table",
+   "label": "Applicable Items",
+   "options": "Coupon Items"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Coupon",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Customer"
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "coupon_code"
+}

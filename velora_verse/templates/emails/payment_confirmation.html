@@ -1,0 +1,12 @@
+<h2>Payment Confirmed</h2>
+<p>Hi {{ customer_name }},</p>
+<p>We've received your payment for order <strong>{{ order_name }}</strong>.</p>
+
+<table style="width:300px;margin:16px 0;border-collapse:collapse;">
+	<tr><td style="padding:4px;">Amount Paid:</td><td style="padding:4px;text-align:right;font-weight:bold;">{{ total }}</td></tr>
+	<tr><td style="padding:4px;">Payment Method:</td><td style="padding:4px;text-align:right;">{{ payment_method }}</td></tr>
+	<tr><td style="padding:4px;">Status:</td><td style="padding:4px;text-align:right;color:#38a169;">{{ payment_status }}</td></tr>
+</table>
+
+<p>Your order is now being processed. We'll send you a shipping update soon.</p>
+<p>Thanks for shopping with {{ store_name }}!</p>

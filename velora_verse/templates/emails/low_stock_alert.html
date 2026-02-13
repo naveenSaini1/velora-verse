@@ -1,0 +1,38 @@
+<h2>Low Stock Alert - {{ store_name }}</h2>
+<p>The following variants require attention:</p>
+
+{% if out_of_stock %}
+<h3 style="color:#e53e3e;">Out of Stock ({{ oos_count }} variants)</h3>
+<table style="width:100%;border-collapse:collapse;margin:8px 0;">
+	<tr style="background:#fed7d7;">
+		<th style="padding:8px;text-align:left;border:1px solid #ddd;">Variant</th>
+		<th style="padding:8px;text-align:left;border:1px solid #ddd;">Item</th>
+	</tr>
+	{% for v in out_of_stock %}
+	<tr>
+		<td style="padding:6px 8px;border:1px solid #ddd;">{{ v.title }}</td>
+		<td style="padding:6px 8px;border:1px solid #ddd;">{{ v.item_name }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+{% if low_stock %}
+<h3 style="color:#dd6b20;">Low Stock ({{ low_stock_count }} variants, threshold: {{ threshold }})</h3>
+<table style="width:100%;border-collapse:collapse;margin:8px 0;">
+	<tr style="background:#fefcbf;">
+		<th style="padding:8px;text-align:left;border:1px solid #ddd;">Variant</th>
+		<th style="padding:8px;text-align:left;border:1px solid #ddd;">Item</th>
+		<th style="padding:8px;text-align:right;border:1px solid #ddd;">Qty</th>
+	</tr>
+	{% for v in low_stock %}
+	<tr>
+		<td style="padding:6px 8px;border:1px solid #ddd;">{{ v.title }}</td>
+		<td style="padding:6px 8px;border:1px solid #ddd;">{{ v.item_name }}</td>
+		<td style="padding:6px 8px;text-align:right;border:1px solid #ddd;">{{ v.quantity }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+<p>Please restock these items to avoid missed sales.</p>

@@ -1,0 +1,127 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "points_change",
+  "transaction_type",
+  "column_break_info",
+  "running_balance",
+  "expiry_date",
+  "is_expired",
+  "section_break_ref",
+  "reference_doctype",
+  "reference_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "points_change",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Points Change",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Transaction Type",
+   "options": "Earn\nRedeem\nExpiry\nAdjustment\nRefund",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "running_balance",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Running Balance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_expired",
+   "fieldtype": "Check",
+   "label": "Is Expired"
+  },
+  {
+   "fieldname": "section_break_ref",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Data",
+   "label": "Reference DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "label": "Reference Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Loyalty Points Ledger",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin"
+  },
+  {
+   "read": 1,
+   "role": "Customer"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

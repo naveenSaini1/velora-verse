@@ -1,0 +1,126 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "subscription_name",
+  "target_url",
+  "event_type",
+  "column_break_config",
+  "is_active",
+  "secret_key",
+  "content_type",
+  "retry_count",
+  "section_break_logs",
+  "webhook_logs"
+ ],
+ "fields": [
+  {
+   "fieldname": "subscription_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subscription Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Target URL",
+   "options": "URL",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Event Type",
+   "options": "order.created\norder.paid\norder.shipped\norder.delivered\norder.cancelled\npayment.received\nreturn.requested\nreturn.approved\ninventory.low_stock\ninventory.updated\ncustomer.registered",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_config",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "secret_key",
+   "fieldtype": "Password",
+   "label": "Secret Key"
+  },
+  {
+   "default": "application/json",
+   "fieldname": "content_type",
+   "fieldtype": "Select",
+   "label": "Content Type",
+   "options": "application/json\napplication/x-www-form-urlencoded"
+  },
+  {
+   "default": "3",
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count"
+  },
+  {
+   "fieldname": "section_break_logs",
+   "fieldtype": "Section Break",
+   "label": "Delivery Logs",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "webhook_logs",
+   "fieldtype": "Table",
+   "label": "Webhook Logs",
+   "options": "Webhook Log Entry",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Webhook Subscription",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Store Admin"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

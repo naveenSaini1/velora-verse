@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "transaction_date",
+  "transaction_type",
+  "amount",
+  "column_break",
+  "balance_after",
+  "order_reference",
+  "redeemed_by"
+ ],
+ "fields": [
+  {
+   "default": "Now",
+   "fieldname": "transaction_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Transaction Date"
+  },
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Transaction Type",
+   "options": "Purchase\nRedemption\nRefund\nExpiry",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "balance_after",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Balance After",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_reference",
+   "fieldtype": "Data",
+   "label": "Order Reference"
+  },
+  {
+   "fieldname": "redeemed_by",
+   "fieldtype": "Link",
+   "label": "Redeemed By",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Gift Card Transaction",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

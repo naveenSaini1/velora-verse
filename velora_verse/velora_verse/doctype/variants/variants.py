@@ -1,6 +1,8 @@
 # Copyright (c) 2026, velora-verse and contributors
 # For license information, please see license.txt
 
+import re
+
 import frappe
 from frappe.model.document import Document
 
@@ -17,6 +19,7 @@ class Variants(Document):
 		self.set_default_price()
 		self.validate_duplicate_variant()
 		self.validate_primary_image()
+		self.generate_slug()
 
 	def on_update(self):
 		self.update_parent_stock_status()
@@ -26,7 +29,10 @@ class Variants(Document):
 
 	def validate_has_variant_values(self):
 		if self.variant_name and not self.variant_values:
-			frappe.throw("At least one variant value is required.")
+			# Only enforce for items that actually use variants
+			has_variants = frappe.db.get_value("Items", self.variant_name, "has_variants")
+			if has_variants:
+				frappe.throw("At least one variant value is required.")
 
 	def validate_price(self):
 		if self.price and self.price < 0:
@@ -105,6 +111,14 @@ class Variants(Document):
 					else:
 						row.is_primary = 0
 
+	def generate_slug(self):
+		if not self.slug and self.title:
+			slug = _slugify(self.title)
+			existing = frappe.db.get_value("Variants", {"slug": slug, "name": ["!=", self.name]})
+			if existing:
+				slug = f"{slug}-{frappe.generate_hash(length=4)}"
+			self.slug = slug
+
 	def update_parent_stock_status(self):
 		if not self.variant_name:
 			return
@@ -115,6 +129,14 @@ class Variants(Document):
 		}) > 0
 
 		frappe.db.set_value("Items", self.variant_name, "in_stock", 1 if has_stock else 0)
+
+
+def _slugify(text):
+	"""Convert text to URL-friendly slug."""
+	text = text.lower().strip()
+	text = re.sub(r"[^\w\s-]", "", text)
+	text = re.sub(r"[-\s]+", "-", text)
+	return text.strip("-")
 
 
 @frappe.whitelist()

@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "category_name",
+  "slug",
   "image",
   "image_preview",
   "column_break_egai",
@@ -15,7 +16,10 @@
   "is_active",
   "display_order",
   "section_break_lrcn",
-  "description"
+  "description",
+  "section_break_seo",
+  "meta_title",
+  "meta_description"
  ],
  "fields": [
   {
@@ -71,13 +75,38 @@
    "fieldname": "is_active",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Active"
+   "label": "Active",
+   "search_index": 1
   },
   {
    "default": "0",
    "fieldname": "display_order",
    "fieldtype": "Int",
    "label": "Display Order"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "unique": 1,
+   "description": "URL-friendly name, auto-generated from category name"
+  },
+  {
+   "fieldname": "section_break_seo",
+   "fieldtype": "Section Break",
+   "label": "SEO",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "meta_title",
+   "fieldtype": "Data",
+   "label": "Meta Title",
+   "length": 70
+  },
+  {
+   "fieldname": "meta_description",
+   "fieldtype": "Small Text",
+   "label": "Meta Description"
   }
  ],
  "grid_page_length": 50,
@@ -98,9 +127,34 @@
    "print": 1,
    "read": 1,
    "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Customer"
   }
  ],
  "row_format": "Dynamic",

@@ -9,14 +9,20 @@
   "variants_details_section",
   "variant_name",
   "title",
+  "sku",
   "column_break_dybt",
   "quantity",
   "price",
   "is_stock",
   "wishlist_count",
+  "weight",
+  "barcode",
+  "slug",
   "section_break_avih",
   "image",
-  "variant_values"
+  "variant_values",
+  "section_break_warehouse",
+  "warehouse_stock"
  ],
  "fields": [
   {
@@ -29,6 +35,18 @@
    "fieldtype": "Table",
    "label": "Variant Values",
    "options": "Variant Table"
+  },
+  {
+   "fieldname": "section_break_warehouse",
+   "fieldtype": "Section Break",
+   "label": "Warehouse Stock",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "warehouse_stock",
+   "fieldtype": "Table",
+   "label": "Warehouse Stock",
+   "options": "Warehouse Stock"
   },
   {
    "fieldname": "variant_name",
@@ -87,6 +105,32 @@
    "in_list_view": 1,
    "label": "Wishlist Count",
    "read_only": 1
+  },
+  {
+   "fieldname": "sku",
+   "fieldtype": "Data",
+   "label": "SKU",
+   "unique": 1,
+   "description": "Variant-specific stock keeping unit"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight (kg)",
+   "description": "Weight in kilograms for shipping calculation"
+  },
+  {
+   "fieldname": "barcode",
+   "fieldtype": "Data",
+   "label": "Barcode"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "unique": 1,
+   "read_only": 1,
+   "description": "Auto-generated URL-friendly slug"
   }
  ],
  "grid_page_length": 50,
@@ -107,9 +151,35 @@
    "print": 1,
    "read": 1,
    "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Customer"
   }
  ],
  "row_format": "Dynamic",

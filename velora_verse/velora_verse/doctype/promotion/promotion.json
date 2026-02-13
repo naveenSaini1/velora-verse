@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "autoname": "VV-PROMO-.#####",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "promotion_title",
+  "discount_type",
+  "discount_value",
+  "start_datetime",
+  "end_datetime",
+  "column_break",
+  "is_active",
+  "priority_level",
+  "apply_to",
+  "max_quantity_per_user",
+  "total_stock_limit",
+  "section_break_display",
+  "badge_text",
+  "banner_image",
+  "section_break_items",
+  "promotion_items"
+ ],
+ "fields": [
+  {
+   "fieldname": "promotion_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Promotion Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Discount Type",
+   "options": "Percentage\nFlat\nFixed Price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discount_value",
+   "fieldtype": "Float",
+   "label": "Discount Value",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_datetime",
+   "fieldtype": "Datetime",
+   "label": "Start Datetime",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_datetime",
+   "fieldtype": "Datetime",
+   "label": "End Datetime",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "default": "1",
+   "fieldname": "priority_level",
+   "fieldtype": "Int",
+   "label": "Priority Level"
+  },
+  {
+   "default": "Specific Items",
+   "fieldname": "apply_to",
+   "fieldtype": "Select",
+   "label": "Apply To",
+   "options": "All Items\nSpecific Items\nCategory"
+  },
+  {
+   "default": "0",
+   "description": "0 = unlimited",
+   "fieldname": "max_quantity_per_user",
+   "fieldtype": "Int",
+   "label": "Max Quantity Per User"
+  },
+  {
+   "default": "0",
+   "description": "0 = unlimited",
+   "fieldname": "total_stock_limit",
+   "fieldtype": "Int",
+   "label": "Total Stock Limit"
+  },
+  {
+   "fieldname": "section_break_display",
+   "fieldtype": "Section Break",
+   "label": "Display"
+  },
+  {
+   "description": "e.g. FLASH SALE, 50% OFF",
+   "fieldname": "badge_text",
+   "fieldtype": "Data",
+   "label": "Badge Text"
+  },
+  {
+   "fieldname": "banner_image",
+   "fieldtype": "Attach Image",
+   "label": "Banner Image"
+  },
+  {
+   "fieldname": "section_break_items",
+   "fieldtype": "Section Break",
+   "label": "Promotion Items"
+  },
+  {
+   "fieldname": "promotion_items",
+   "fieldtype": "Table",
+   "label": "Promotion Items",
+   "options": "Promotion Items"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Promotion",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Store Admin",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

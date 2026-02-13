@@ -7,6 +7,7 @@
  "field_order": [
   "user",
   "total",
+  "last_reminded_on",
   "cart_items"
  ],
  "fields": [
@@ -25,6 +26,13 @@
    "in_list_view": 1,
    "label": "Total",
    "read_only": 1
+  },
+  {
+   "fieldname": "last_reminded_on",
+   "fieldtype": "Datetime",
+   "label": "Last Reminded On",
+   "read_only": 1,
+   "hidden": 1
   },
   {
    "fieldname": "cart_items",
@@ -51,9 +59,32 @@
    "print": 1,
    "read": 1,
    "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin"
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "Customer"
   }
  ],
  "row_format": "Dynamic",

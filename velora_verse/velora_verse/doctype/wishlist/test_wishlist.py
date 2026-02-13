@@ -9,8 +9,7 @@ class TestWishlist(FrappeTestCase):
 	def setUp(self):
 		if frappe.db.exists("Wishlist", "Administrator"):
 			frappe.delete_doc("Wishlist", "Administrator", force=True)
-		frappe.db.sql("UPDATE `tabVariants` SET wishlist_count = 0")
-		frappe.db.commit()
+			frappe.db.commit()
 
 	def test_add_to_wishlist(self):
 		from velora_verse.velora_verse.doctype.wishlist.wishlist import add_to_wishlist
@@ -54,11 +53,14 @@ class TestWishlist(FrappeTestCase):
 		if not variants:
 			self.skipTest("No variants")
 
+		# Get the count before adding (seed data may have existing wishlists)
+		count_before = frappe.db.get_value("Variants", variants[0], "wishlist_count") or 0
+
 		add_to_wishlist(variants[0])
 		frappe.db.commit()
 
-		count = frappe.db.get_value("Variants", variants[0], "wishlist_count")
-		self.assertEqual(count, 1)
+		count_after = frappe.db.get_value("Variants", variants[0], "wishlist_count")
+		self.assertEqual(count_after, count_before + 1)
 
 	def test_is_in_wishlist(self):
 		from velora_verse.velora_verse.doctype.wishlist.wishlist import add_to_wishlist, is_in_wishlist

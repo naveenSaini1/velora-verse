@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "attempt_datetime",
+  "response_status",
+  "delivery_status",
+  "response_body"
+ ],
+ "fields": [
+  {
+   "fieldname": "attempt_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Attempt Datetime"
+  },
+  {
+   "fieldname": "response_status",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Response Status"
+  },
+  {
+   "fieldname": "delivery_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Delivery Status",
+   "options": "Pending\nSuccess\nFailed"
+  },
+  {
+   "fieldname": "response_body",
+   "fieldtype": "Small Text",
+   "label": "Response Body"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Webhook Log Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

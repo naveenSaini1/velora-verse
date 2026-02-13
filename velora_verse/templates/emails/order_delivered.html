@@ -1,0 +1,20 @@
+<h2>Your Order Has Been Delivered!</h2>
+<p>Hi {{ customer_name }},</p>
+<p>Your order <strong>{{ order_name }}</strong> has been delivered{% if delivered_on %} on {{ delivered_on }}{% endif %}.</p>
+
+<h3>Order Summary</h3>
+<table style="width:100%;border-collapse:collapse;margin:8px 0;">
+	{% for item in items %}
+	<tr>
+		<td style="padding:6px 0;">{{ item.variant_title }} x {{ item.quantity }}</td>
+		<td style="padding:6px 0;text-align:right;">{{ item.amount }}</td>
+	</tr>
+	{% endfor %}
+	<tr style="border-top:1px solid #ddd;font-weight:bold;">
+		<td style="padding:8px 0;">Total</td>
+		<td style="padding:8px 0;text-align:right;">{{ total }}</td>
+	</tr>
+</table>
+
+<p>We hope you love your purchase! If you have any issues, you can request a return within 7 days.</p>
+<p>Thanks for shopping with {{ store_name }}!</p>

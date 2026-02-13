@@ -1,0 +1,130 @@
+{
+ "actions": [],
+ "autoname": "field:pincode",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "pincode",
+  "is_serviceable",
+  "city",
+  "column_break_info",
+  "state",
+  "zone",
+  "section_break_delivery",
+  "cod_available",
+  "column_break_delivery",
+  "estimated_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Pincode",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_serviceable",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Serviceable"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "State"
+  },
+  {
+   "fieldname": "zone",
+   "fieldtype": "Data",
+   "label": "Zone"
+  },
+  {
+   "fieldname": "section_break_delivery",
+   "fieldtype": "Section Break",
+   "label": "Delivery Options"
+  },
+  {
+   "default": "1",
+   "fieldname": "cod_available",
+   "fieldtype": "Check",
+   "label": "COD Available"
+  },
+  {
+   "fieldname": "column_break_delivery",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "5",
+   "fieldname": "estimated_days",
+   "fieldtype": "Int",
+   "label": "Estimated Delivery Days"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Serviceable Pincode",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Guest"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "pincode"
+}

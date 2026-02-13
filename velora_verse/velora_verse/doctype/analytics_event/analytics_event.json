@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-02-12 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "event_name",
+  "user",
+  "session_id",
+  "event_timestamp",
+  "column_break_info",
+  "reference_doctype",
+  "reference_name",
+  "page_url",
+  "section_break_meta",
+  "user_agent",
+  "ip_address",
+  "column_break_meta",
+  "event_data_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_name",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Event Name",
+   "options": "page_view\nadd_to_cart\nremove_from_cart\nbegin_checkout\npurchase\nsearch\nproduct_view\nadd_to_wishlist\napply_coupon\nsign_up",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "session_id",
+   "fieldtype": "Data",
+   "label": "Session ID"
+  },
+  {
+   "default": "Now",
+   "fieldname": "event_timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Event Timestamp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_info",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Data",
+   "label": "Reference DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "label": "Reference Name"
+  },
+  {
+   "fieldname": "page_url",
+   "fieldtype": "Data",
+   "label": "Page URL"
+  },
+  {
+   "fieldname": "section_break_meta",
+   "fieldtype": "Section Break",
+   "label": "Metadata",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "user_agent",
+   "fieldtype": "Small Text",
+   "label": "User Agent"
+  },
+  {
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address"
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event_data_json",
+   "fieldtype": "Code",
+   "label": "Event Data (JSON)",
+   "options": "JSON"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-12 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "velora-verse",
+ "name": "Analytics Event",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Store Admin"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

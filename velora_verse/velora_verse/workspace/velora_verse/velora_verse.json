@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"hdr01\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Velora Verse</b></span>\",\"col\":12}},{\"id\":\"par01\",\"type\":\"paragraph\",\"data\":{\"text\":\"E-commerce product catalog \\u2014 items, categories, variants, reviews, wishlists, and carts.\",\"col\":12}},{\"id\":\"nc01\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Products\",\"col\":3}},{\"id\":\"nc02\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"In-Stock Variants\",\"col\":3}},{\"id\":\"nc03\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Customer Reviews\",\"col\":3}},{\"id\":\"nc04\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Carts\",\"col\":3}},{\"id\":\"sp01\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr02\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc01\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Items\",\"col\":3}},{\"id\":\"sc02\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Variants\",\"col\":3}},{\"id\":\"sc03\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":3}},{\"id\":\"sc04\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Review\",\"col\":3}},{\"id\":\"sc05\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Wishlist\",\"col\":3}},{\"id\":\"sc06\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cart\",\"col\":3}},{\"id\":\"sp02\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr03\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Quick Lists</b></span>\",\"col\":12}},{\"id\":\"ql01\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Latest Reviews\",\"col\":6}},{\"id\":\"ql02\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Recent Carts\",\"col\":6}},{\"id\":\"sp03\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr04\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"cd01\",\"type\":\"card\",\"data\":{\"card_name\":\"Product Catalog\",\"col\":4}},{\"id\":\"cd02\",\"type\":\"card\",\"data\":{\"card_name\":\"Customer Engagement\",\"col\":4}},{\"id\":\"cd03\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}}]",
+ "content": "[{\"id\":\"hdr01\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Velora Verse</b></span>\",\"col\":12}},{\"id\":\"par01\",\"type\":\"paragraph\",\"data\":{\"text\":\"E-commerce store management \\u2014 products, orders, promotions, loyalty, gift cards, analytics, and more.\",\"col\":12}},{\"id\":\"nc01\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Products\",\"col\":3}},{\"id\":\"nc02\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"In-Stock Variants\",\"col\":3}},{\"id\":\"nc05\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Total Orders\",\"col\":3}},{\"id\":\"nc03\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Customer Reviews\",\"col\":3}},{\"id\":\"nc04\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Carts\",\"col\":3}},{\"id\":\"nc06\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Pending Returns\",\"col\":3}},{\"id\":\"nc07\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Low Stock Variants\",\"col\":3}},{\"id\":\"nc08\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Promotions\",\"col\":3}},{\"id\":\"nc09\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Active Gift Cards\",\"col\":3}},{\"id\":\"nc10\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Product Bundles\",\"col\":3}},{\"id\":\"nc11\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Loyalty Rules\",\"col\":3}},{\"id\":\"sp01\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr02\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc01\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Items\",\"col\":3}},{\"id\":\"sc02\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Variants\",\"col\":3}},{\"id\":\"sc03\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":3}},{\"id\":\"sc04\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Order\",\"col\":3}},{\"id\":\"sc05\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Promotion\",\"col\":3}},{\"id\":\"sc06\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Gift Card\",\"col\":3}},{\"id\":\"sc07\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Product Bundle\",\"col\":3}},{\"id\":\"sc08\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Warehouse\",\"col\":3}},{\"id\":\"sc09\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Coupon\",\"col\":3}},{\"id\":\"sc10\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Segment\",\"col\":3}},{\"id\":\"sc11\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Loyalty Points Rule\",\"col\":3}},{\"id\":\"sp02\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr03\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Quick Lists</b></span>\",\"col\":12}},{\"id\":\"ql03\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Recent Orders\",\"col\":6}},{\"id\":\"ql01\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Latest Reviews\",\"col\":6}},{\"id\":\"ql04\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Return Requests\",\"col\":6}},{\"id\":\"ql02\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Active Promotions\",\"col\":6}},{\"id\":\"ql05\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Recent Gift Cards\",\"col\":6}},{\"id\":\"ql06\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Loyalty Points Ledger\",\"col\":6}},{\"id\":\"ql07\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"User Notifications\",\"col\":6}},{\"id\":\"ql08\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Recent Payments\",\"col\":6}},{\"id\":\"sp03\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr04\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"cd01\",\"type\":\"card\",\"data\":{\"card_name\":\"Product Catalog\",\"col\":3}},{\"id\":\"cd02\",\"type\":\"card\",\"data\":{\"card_name\":\"Orders & Commerce\",\"col\":3}},{\"id\":\"cd03\",\"type\":\"card\",\"data\":{\"card_name\":\"Promotions & Loyalty\",\"col\":3}},{\"id\":\"cd04\",\"type\":\"card\",\"data\":{\"card_name\":\"Customer Engagement\",\"col\":3}},{\"id\":\"cd05\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":3}},{\"id\":\"cd06\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":3}}]",
  "creation": "2026-02-07 21:23:16.188989",
  "custom_blocks": [],
  "docstatus": 0,
@@ -17,7 +17,7 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Product Catalog",
-   "link_count": 3,
+   "link_count": 5,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -55,8 +55,176 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "HSN Code",
+   "link_count": 0,
+   "link_to": "HSN Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Product Bundle",
+   "link_count": 0,
+   "link_to": "Product Bundle",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Orders & Commerce",
+   "link_count": 7,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Order",
+   "link_count": 0,
+   "link_to": "Order",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Return Request",
+   "link_count": 0,
+   "link_to": "Return Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Log",
+   "link_count": 0,
+   "link_to": "Payment Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inventory Log",
+   "link_count": 0,
+   "link_to": "Inventory Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Coupon",
+   "link_count": 0,
+   "link_to": "Coupon",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Address",
+   "link_count": 0,
+   "link_to": "Address",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Serviceable Pincode",
+   "link_count": 0,
+   "link_to": "Serviceable Pincode",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Promotions & Loyalty",
+   "link_count": 6,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Promotion",
+   "link_count": 0,
+   "link_to": "Promotion",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gift Card",
+   "link_count": 0,
+   "link_to": "Gift Card",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Points Ledger",
+   "link_count": 0,
+   "link_to": "Loyalty Points Ledger",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Loyalty Points Rule",
+   "link_count": 0,
+   "link_to": "Loyalty Points Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Customer Segment",
+   "link_count": 0,
+   "link_to": "Customer Segment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Analytics Event",
+   "link_count": 0,
+   "link_to": "Analytics Event",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Customer Engagement",
-   "link_count": 3,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -94,8 +262,38 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Stock Notification",
+   "link_count": 0,
+   "link_to": "Stock Notification",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User Notification",
+   "link_count": 0,
+   "link_to": "User Notification",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Recent View",
+   "link_count": 0,
+   "link_to": "Recent View",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Configuration",
-   "link_count": 3,
+   "link_count": 7,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -129,9 +327,98 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Warehouse",
+   "link_count": 0,
+   "link_to": "Warehouse",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Webhook Subscription",
+   "link_count": 0,
+   "link_to": "Webhook Subscription",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User",
+   "link_count": 0,
+   "link_to": "User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "HSN Code",
+   "link_count": 0,
+   "link_to": "HSN Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 4,
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Sales Report",
+   "link_count": 0,
+   "link_to": "Sales Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Inventory Status",
+   "link_count": 0,
+   "link_to": "Inventory Status",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Customer Report",
+   "link_count": 0,
+   "link_to": "Customer Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Category Sales",
+   "link_count": 0,
+   "link_to": "Category Sales",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-02-10 22:15:45.108012",
+ "modified": "2026-02-13 10:00:00.000000",
  "modified_by": "Administrator",
  "module": "velora-verse",
  "name": "Velora Verse",
@@ -147,6 +434,11 @@
    "number_card_name": "In-Stock Variants"
   },
   {
+   "color": "#7c3aed",
+   "label": "Total Orders",
+   "number_card_name": "Total Orders"
+  },
+  {
    "color": "#ECAD4B",
    "label": "Customer Reviews",
    "number_card_name": "Customer Reviews"
@@ -155,6 +447,36 @@
    "color": "#EC864B",
    "label": "Active Carts",
    "number_card_name": "Active Carts"
+  },
+  {
+   "color": "#e53e3e",
+   "label": "Pending Returns",
+   "number_card_name": "Pending Returns"
+  },
+  {
+   "color": "#d69e2e",
+   "label": "Low Stock Variants",
+   "number_card_name": "Low Stock Variants"
+  },
+  {
+   "color": "#f56565",
+   "label": "Active Promotions",
+   "number_card_name": "Active Promotions"
+  },
+  {
+   "color": "#9f7aea",
+   "label": "Active Gift Cards",
+   "number_card_name": "Active Gift Cards"
+  },
+  {
+   "color": "#38b2ac",
+   "label": "Product Bundles",
+   "number_card_name": "Product Bundles"
+  },
+  {
+   "color": "#ed8936",
+   "label": "Loyalty Rules",
+   "number_card_name": "Loyalty Rules"
   }
  ],
  "owner": "Administrator",
@@ -162,12 +484,36 @@
  "public": 1,
  "quick_lists": [
   {
+   "document_type": "Order",
+   "label": "Recent Orders"
+  },
+  {
    "document_type": "Review",
    "label": "Latest Reviews"
   },
   {
-   "document_type": "Cart",
-   "label": "Recent Carts"
+   "document_type": "Return Request",
+   "label": "Return Requests"
+  },
+  {
+   "document_type": "Promotion",
+   "label": "Active Promotions"
+  },
+  {
+   "document_type": "Gift Card",
+   "label": "Recent Gift Cards"
+  },
+  {
+   "document_type": "Loyalty Points Ledger",
+   "label": "Loyalty Points Ledger"
+  },
+  {
+   "document_type": "User Notification",
+   "label": "User Notifications"
+  },
+  {
+   "document_type": "Payment Log",
+   "label": "Recent Payments"
   }
  ],
  "roles": [],
@@ -198,26 +544,66 @@
    "type": "DocType"
   },
   {
-   "color": "Yellow",
+   "color": "Red",
    "doc_view": "List",
-   "label": "Review",
-   "link_to": "Review",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Pink",
-   "doc_view": "List",
-   "label": "Wishlist",
-   "link_to": "Wishlist",
+   "label": "Order",
+   "link_to": "Order",
    "stats_filter": "[]",
    "type": "DocType"
   },
   {
    "color": "Orange",
    "doc_view": "List",
-   "label": "Cart",
-   "link_to": "Cart",
+   "label": "Promotion",
+   "link_to": "Promotion",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Gift Card",
+   "link_to": "Gift Card",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "Product Bundle",
+   "link_to": "Product Bundle",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Warehouse",
+   "link_to": "Warehouse",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "label": "Coupon",
+   "link_to": "Coupon",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Customer Segment",
+   "link_to": "Customer Segment",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Loyalty Points Rule",
+   "link_to": "Loyalty Points Rule",
    "stats_filter": "[]",
    "type": "DocType"
   }
