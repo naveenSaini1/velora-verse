@@ -134,7 +134,11 @@ def get_products(
 		SELECT DISTINCT
 			i.name, i.item_name, i.slug, i.type, i.status,
 			i.base_price, i.sku, i.average_rating, i.review_count,
-			i.in_stock, i.has_variants, i.is_featured, i.description
+			i.in_stock, i.has_variants, i.is_featured, i.description,
+			COALESCE(
+				(SELECT SUM(v.quantity) FROM `tabVariants` v WHERE v.variant_name = i.name),
+				0
+			) as stock_qty
 		FROM `tabItems` i
 		{category_join}
 		WHERE {where_clause}
@@ -285,6 +289,9 @@ def get_product_detail(slug=None, name=None):
 	# Auto-include top 4 recommendations
 	recs = get_recommendations(item.name, limit=4)
 
+	# Compute total stock quantity across all variants
+	total_stock_qty = sum(v.get("quantity", 0) for v in variants) if variants else 0
+
 	return {
 		"name": item.name,
 		"item_name": item.item_name,
@@ -298,6 +305,7 @@ def get_product_detail(slug=None, name=None):
 		"in_stock": item.in_stock,
 		"has_variants": item.has_variants,
 		"is_featured": getattr(item, "is_featured", 0),
+		"stock_qty": total_stock_qty,
 		"images": images,
 		"categories": categories,
 		"variants": variants,

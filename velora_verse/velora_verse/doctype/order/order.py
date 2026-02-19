@@ -18,6 +18,7 @@ class Order(Document):
 	def on_submit(self):
 		self.deduct_stock()
 		self._earn_loyalty_points()
+		self._log_status("Pending", "Order placed")
 		self._send_notification("order_confirmation", "Order Confirmation")
 		self._create_user_notification("Order Confirmed", f"Your order {self.name} has been placed.")
 		self._dispatch_webhook("order.created")
@@ -25,6 +26,7 @@ class Order(Document):
 	def on_cancel(self):
 		self.restore_stock()
 		self.status = "Cancelled"
+		self._log_status("Cancelled", self.cancelled_reason or "Order cancelled")
 		self._refund_loyalty_points()
 		self._refund_gift_card()
 		self._send_notification("order_cancelled", "Order Cancelled")
@@ -42,6 +44,8 @@ class Order(Document):
 
 		if old_status == new_status:
 			return
+
+		self._log_status(new_status)
 
 		if new_status == "Shipped":
 			self._send_notification("order_shipped", "Order Shipped")
@@ -121,6 +125,19 @@ class Order(Document):
 				refund_to_gift_card(self.gift_card_code, self.gift_card_amount, self.name, self.user)
 			except Exception:
 				frappe.log_error(title=f"Gift Card Refund Failed: {self.name}", message=frappe.get_traceback())
+
+	def _log_status(self, status, note=None):
+		"""Create an Order Status Log entry for timeline tracking."""
+		try:
+			frappe.get_doc({
+				"doctype": "Order Status Log",
+				"order": self.name,
+				"status": status,
+				"timestamp": now_datetime(),
+				"note": note,
+			}).insert(ignore_permissions=True)
+		except Exception:
+			frappe.log_error(title=f"Status Log Failed: {self.name}", message=frappe.get_traceback())
 
 	def validate_order_items(self):
 		if not self.order_items:
@@ -745,3 +762,27 @@ def cancel_order(order_name, reason=None):
 	order.cancel()
 
 	return {"message": "Order cancelled", "order": order.name}
+
+
+@frappe.whitelist()
+def get_order_timeline(order_name):
+	"""Get status history for an order."""
+	user = frappe.session.user
+	if user == "Guest":
+		frappe.throw("Please log in to view order timeline.")
+
+	if not frappe.db.exists("Order", order_name):
+		frappe.throw("Order not found.")
+
+	order_user = frappe.db.get_value("Order", order_name, "user")
+	if order_user != user and user != "Administrator" and "Store Admin" not in frappe.get_roles(user):
+		frappe.throw("You can only view your own orders.", frappe.PermissionError)
+
+	logs = frappe.get_all(
+		"Order Status Log",
+		filters={"order": order_name},
+		fields=["status", "timestamp", "note"],
+		order_by="timestamp asc",
+	)
+
+	return {"timeline": logs}

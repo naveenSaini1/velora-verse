@@ -15,8 +15,7 @@ def get_dashboard_stats(period="monthly"):
 	Args:
 		period: 'daily', 'weekly', 'monthly', 'yearly'
 	"""
-	if "Store Admin" not in frappe.get_roles() and frappe.session.user != "Administrator":
-		frappe.throw("Access denied.", frappe.PermissionError)
+	_check_admin_access()
 
 	now = now_datetime()
 	period_start = _get_period_start(now, period)
@@ -159,8 +158,7 @@ def get_revenue_chart(period="monthly", group_by="day"):
 		period: 'weekly', 'monthly', 'quarterly', 'yearly'
 		group_by: 'day', 'week', 'month'
 	"""
-	if "Store Admin" not in frappe.get_roles() and frappe.session.user != "Administrator":
-		frappe.throw("Access denied.", frappe.PermissionError)
+	_check_admin_access()
 
 	now = now_datetime()
 	period_start = _get_period_start(now, period)
@@ -193,8 +191,7 @@ def get_revenue_chart(period="monthly", group_by="day"):
 @frappe.whitelist()
 def get_order_funnel():
 	"""Get cart-to-order-to-paid-to-delivered conversion funnel."""
-	if "Store Admin" not in frappe.get_roles() and frappe.session.user != "Administrator":
-		frappe.throw("Access denied.", frappe.PermissionError)
+	_check_admin_access()
 
 	# Active carts (with items)
 	active_carts = frappe.db.sql("""
@@ -220,6 +217,14 @@ def get_order_funnel():
 			{"stage": "Delivered", "count": delivered_orders},
 		]
 	}
+
+
+def _check_admin_access():
+	"""Verify the current user has admin access to the dashboard."""
+	admin_roles = {"Administrator", "System Manager", "Store Admin"}
+	user_roles = set(frappe.get_roles())
+	if not admin_roles.intersection(user_roles):
+		frappe.throw("Access denied.", frappe.PermissionError)
 
 
 def _get_period_start(now, period):

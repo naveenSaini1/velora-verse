@@ -13,7 +13,8 @@
   "is_verified",
   "section_break_content",
   "review_title",
-  "review_text"
+  "review_text",
+  "helpful_count"
  ],
  "fields": [
   {
@@ -72,6 +73,13 @@
    "fieldname": "review_text",
    "fieldtype": "Text",
    "label": "Review"
+  },
+  {
+   "default": "0",
+   "fieldname": "helpful_count",
+   "fieldtype": "Int",
+   "label": "Helpful Count",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,

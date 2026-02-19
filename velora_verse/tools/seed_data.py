@@ -148,18 +148,299 @@ def seed():
 # ---------------------------------------------------------------------------
 # Helper
 # ---------------------------------------------------------------------------
+def _unsplash(photo_id, w=800, h=1000):
+	"""Build an Unsplash CDN URL for a verified photo ID."""
+	return f"https://images.unsplash.com/photo-{photo_id}?w={w}&h={h}&fit=crop&q=80"
+
+
 def _img(slug, n, w=800, h=1000):
-	"""Generate a deterministic placeholder image URL."""
+	"""Fallback: deterministic placeholder from picsum."""
 	return f"https://picsum.photos/seed/{slug}-{n}/{w}/{h}"
 
 
+# Verified Unsplash photo IDs mapped to each product slug.
+# Each list has 3-4 IDs: [main/front, alternate, detail, lifestyle(optional)]
+PRODUCT_IMAGES = {
+	# ── Clothing ──────────────────────────────────────────────────────────
+	"classic-cotton-tshirt": [
+		"1521572163474-6864f9cf17ab",  # white tee on hanger
+		"1583743814966-8936f5b7be1a",  # folded t-shirts
+		"1562157873-818bc0726f68",     # flat-lay tee
+		"1576566588028-4147f3842f27",  # colourful tees
+	],
+	"premium-zip-hoodie": [
+		"1556821840-3a63f95609a7",  # grey hoodie
+		"1620799140408-edc6dcb6d633",  # hoodie on rack
+		"1578768079052-aa76e52ff62e",  # zip hoodie
+	],
+	"slim-fit-denim-jeans": [
+		"1542272604-787c3835535d",  # blue denim jeans
+		"1541099649105-f69ad21f3246",  # denim close-up
+		"1560769629-975ec94e6a86",  # fashion denim
+	],
+	"winter-puffer-jacket": [
+		"1548126032-079a0fb0099d",  # puffer jacket
+		"1544022613-e87ca75a784a",  # jacket detail
+		"1591085686350-798c0f9faa7f",  # winter outerwear
+		"1606107557195-0e29a4b5b4aa",  # lifestyle
+	],
+	"floral-maxi-dress": [
+		"1496747611176-843222e1e57c",  # dresses on rack
+		"1618354691373-d851c5c3a990",  # fashion dress
+		"1564584217132-2271feaeb3c5",  # dress detail
+	],
+	"cotton-cargo-shorts": [
+		"1591348278863-a8fb3887e2aa",  # casual shorts
+		"1591047139829-d91aecb6caea",  # shorts detail
+		"1606107557195-0e29a4b5b4aa",  # casual wear
+	],
+	"classic-polo-shirt": [
+		"1622434641406-a158123450f9",  # polo shirt
+		"1521572163474-6864f9cf17ab",  # shirt on hanger
+		"1576566588028-4147f3842f27",  # coloured shirts
+	],
+	"merino-wool-sweater": [
+		"1576566588028-4147f3842f27",  # knitwear colours
+		"1516762689617-e1cffcef479d",  # sweater
+		"1543163521-1bf539c55dd2",     # cosy knit
+	],
+	"striped-crew-neck-tshirt": [
+		"1583743814966-8936f5b7be1a",  # tees stack
+		"1562157873-818bc0726f68",     # flat-lay tee
+		"1521572163474-6864f9cf17ab",  # tee on hanger
+	],
+	"graphic-tank-top": [
+		"1562157873-818bc0726f68",  # casual top
+		"1576566588028-4147f3842f27",  # tops stack
+		"1583743814966-8936f5b7be1a",  # folded tops
+	],
+	"linen-button-down-shirt": [
+		"1517841905240-472988babdf9",  # button-down shirt
+		"1622434641406-a158123450f9",  # dress shirt
+		"1521572163474-6864f9cf17ab",  # shirt on hanger
+	],
+	"velvet-evening-blazer": [
+		"1507679799987-c73779587ccf",  # blazer / suit
+		"1594938298603-c8148c4dae35",  # formal wear
+		"1591561954557-26941169b49e",  # evening wear
+		"1517841905240-472988babdf9",  # lifestyle
+	],
+	"slim-jogger-track-pants": [
+		"1585386959984-a4155224a1ad",  # joggers
+		"1591047139829-d91aecb6caea",  # track pants
+		"1606107557195-0e29a4b5b4aa",  # activewear
+	],
+	"classic-denim-jacket": [
+		"1544022613-e87ca75a784a",  # denim jacket
+		"1548126032-079a0fb0099d",  # jacket
+		"1560769629-975ec94e6a86",  # denim style
+	],
+	"wrap-mini-skirt": [
+		"1564584217132-2271feaeb3c5",  # skirt
+		"1496747611176-843222e1e57c",  # clothing rack
+		"1618354691373-d851c5c3a990",  # fashion
+	],
+	"cropped-zip-hoodie": [
+		"1578768079052-aa76e52ff62e",  # cropped hoodie
+		"1556821840-3a63f95609a7",  # hoodie
+		"1620799140408-edc6dcb6d633",  # hoodie style
+	],
+	"henley-long-sleeve-tee": [
+		"1521572163474-6864f9cf17ab",  # long sleeve on hanger
+		"1583743814966-8936f5b7be1a",  # tees
+		"1525966222134-fcfa99b8ae77",  # casual wear
+	],
+	"pleated-palazzo-pants": [
+		"1594938298603-c8148c4dae35",  # wide-leg trousers
+		"1591047139829-d91aecb6caea",  # pants
+		"1564584217132-2271feaeb3c5",  # fashion
+	],
+	"quilted-puffer-vest": [
+		"1548126032-079a0fb0099d",  # puffer outerwear
+		"1591085686350-798c0f9faa7f",  # vest / outerwear
+		"1606107557195-0e29a4b5b4aa",  # outdoor style
+	],
+	"vneck-cashmere-sweater": [
+		"1516762689617-e1cffcef479d",  # v-neck sweater
+		"1543163521-1bf539c55dd2",     # cashmere knit
+		"1576566588028-4147f3842f27",  # knitwear
+	],
+	# ── Footwear ──────────────────────────────────────────────────────────
+	"urban-runner-sneakers": [
+		"1542291026-7eec264c27ff",  # red running sneaker
+		"1460353581641-37baddab0fa2",  # running shoe
+		"1549298916-b41d501d3772",  # sneaker pair
+		"1600185365926-3a2ce3cdb9eb",  # white sneakers
+	],
+	"chelsea-leather-boots": [
+		"1638247025967-b4e38f787b76",  # leather boots
+		"1605733160314-4fc7dac4bb16",  # chelsea boots
+		"1638247025967-b4e38f787b76",  # boot detail
+	],
+	"summer-slide-sandals": [
+		"1603487742131-4160ec999306",  # slides
+		"1603487742131-4160ec999306",  # sandal detail
+		"1491553895911-0055eca6402d",  # summer footwear
+	],
+	"canvas-low-top-sneakers": [
+		"1600185365926-3a2ce3cdb9eb",  # white canvas sneakers
+		"1549298916-b41d501d3772",  # low-top pair
+		"1542291026-7eec264c27ff",  # sneaker style
+	],
+	"hiking-trail-boots": [
+		"1605733160314-4fc7dac4bb16",  # trail boots
+		"1638247025967-b4e38f787b76",  # hiking boots
+		"1605733160314-4fc7dac4bb16",  # boot sole detail
+		"1638247025967-b4e38f787b76",  # outdoor
+	],
+	"classic-leather-loafers": [
+		"1515886657613-9f3515b0c78f",  # leather loafers
+		"1638247025967-b4e38f787b76",  # leather shoe detail
+		"1605733160314-4fc7dac4bb16",  # formal shoe
+	],
+	"sports-running-shoes": [
+		"1460353581641-37baddab0fa2",  # running shoe
+		"1542291026-7eec264c27ff",  # sports sneaker
+		"1549298916-b41d501d3772",  # shoe pair
+	],
+	"strappy-platform-sandals": [
+		"1603487742131-4160ec999306",  # platform sandals
+		"1491553895911-0055eca6402d",  # strappy sandal
+		"1603487742131-4160ec999306",  # sandal detail
+	],
+	"suede-desert-boots": [
+		"1638247025967-b4e38f787b76",  # suede boots
+		"1605733160314-4fc7dac4bb16",  # desert boot
+		"1515886657613-9f3515b0c78f",  # boot detail
+	],
+	"comfort-flip-flops": [
+		"1603487742131-4160ec999306",  # flip flops
+		"1491553895911-0055eca6402d",  # beach footwear
+		"1603487742131-4160ec999306",  # comfort detail
+	],
+	# ── Accessories ────────────────────────────────────────────────────────
+	"snapback-baseball-cap": [
+		"1556306535-0f09a537f0a3",  # snapback cap
+		"1556306535-0f09a537f0a3",  # cap detail
+		"1622445275463-afa2ab738c34",  # lifestyle
+	],
+	"chronograph-wrist-watch": [
+		"1524592094714-0f0654e20314",  # watch face
+		"1523170335258-f5ed11844a49",  # luxury watch
+		"1547996160-81dfa63595aa",     # wrist watch
+		"1524592094714-0f0654e20314",  # chronograph dial
+	],
+	"aviator-sunglasses": [
+		"1511499767150-a48a237f0083",  # aviator sunglasses
+		"1572635196237-14b3f281503f",  # sunglasses flat-lay
+		"1508296695146-257a814070b4",  # sunglasses on table
+	],
+	"genuine-leather-belt": [
+		"1624222247344-550fb60583dc",  # leather belt
+		"1624222247344-550fb60583dc",  # belt buckle detail
+		"1594938298603-c8148c4dae35",  # accessories
+	],
+	"bi-fold-leather-wallet": [
+		"1556905055-8f358a7a47b2",  # leather wallet
+		"1624222247344-550fb60583dc",  # leather goods
+		"1575537302964-96cd47c06b1b",  # wallet detail
+	],
+	"cashmere-winter-scarf": [
+		"1543163521-1bf539c55dd2",  # winter scarf
+		"1516762689617-e1cffcef479d",  # knit scarf
+		"1576566588028-4147f3842f27",  # winter accessories
+	],
+	"silver-chain-bracelet": [
+		"1611312449412-6cefac5dc3e4",  # bracelet
+		"1608667508764-33cf0726b13a",  # silver jewellery
+		"1575537302964-96cd47c06b1b",  # accessories
+	],
+	"knit-beanie-winter-hat": [
+		"1556306535-0f09a537f0a3",  # knit beanie
+		"1543163521-1bf539c55dd2",  # winter headwear
+		"1622445275463-afa2ab738c34",  # lifestyle
+	],
+	"silk-pocket-square": [
+		"1507679799987-c73779587ccf",  # suit pocket square
+		"1594938298603-c8148c4dae35",  # formal accessories
+		"1517841905240-472988babdf9",  # detail
+	],
+	"titanium-cufflinks-set": [
+		"1608667508764-33cf0726b13a",  # cufflinks
+		"1507679799987-c73779587ccf",  # formal accessories
+		"1594938298603-c8148c4dae35",  # accessory set
+	],
+	# ── Bags ───────────────────────────────────────────────────────────────
+	"leather-travel-backpack": [
+		"1553062407-98eeb64c6a62",  # leather backpack
+		"1553062407-98eeb64c6a62",  # backpack detail
+		"1622445275463-afa2ab738c34",  # travel lifestyle
+		"1553062407-98eeb64c6a62",  # hardware detail
+	],
+	"canvas-tote-bag": [
+		"1591561954557-26941169b49e",  # tote bag
+		"1553062407-98eeb64c6a62",  # bag detail
+		"1622445275463-afa2ab738c34",  # lifestyle
+	],
+	"laptop-messenger-bag": [
+		"1553062407-98eeb64c6a62",  # messenger bag
+		"1548102245-c79dbcfa9f92",  # laptop bag
+		"1622445275463-afa2ab738c34",  # work lifestyle
+	],
+	"gym-duffel-bag": [
+		"1553062407-98eeb64c6a62",  # duffel bag
+		"1585386959984-a4155224a1ad",  # gym bag
+		"1606107557195-0e29a4b5b4aa",  # sport lifestyle
+	],
+	"crossbody-sling-bag": [
+		"1553062407-98eeb64c6a62",  # sling bag
+		"1548102245-c79dbcfa9f92",  # crossbody
+		"1622445275463-afa2ab738c34",  # street lifestyle
+	],
+	# ── Misc / Activewear ─────────────────────────────────────────────────
+	"compression-gym-shorts": [
+		"1585386959984-a4155224a1ad",  # gym shorts
+		"1591047139829-d91aecb6caea",  # activewear
+		"1606107557195-0e29a4b5b4aa",  # workout
+	],
+	"thermal-base-layer-top": [
+		"1591085686350-798c0f9faa7f",  # thermal top
+		"1516762689617-e1cffcef479d",  # base layer
+		"1576566588028-4147f3842f27",  # layering
+	],
+	"performance-windbreaker": [
+		"1548126032-079a0fb0099d",  # windbreaker
+		"1591085686350-798c0f9faa7f",  # performance jacket
+		"1606107557195-0e29a4b5b4aa",  # outdoor
+	],
+	"board-swim-shorts": [
+		"1591348278863-a8fb3887e2aa",  # swim shorts
+		"1491553895911-0055eca6402d",  # beach wear
+		"1603487742131-4160ec999306",  # summer
+	],
+	"organic-cotton-cardigan": [
+		"1543163521-1bf539c55dd2",  # cardigan
+		"1516762689617-e1cffcef479d",  # knit detail
+		"1576566588028-4147f3842f27",  # cotton knitwear
+	],
+}
+
+
 def _make_images(slug, alt_base, count=3):
-	"""Build image child-table rows for an item or variant."""
+	"""Build image child-table rows for an item or variant.
+
+	Uses curated Unsplash photos when available, falls back to picsum.
+	"""
 	labels = ["front", "back", "detail", "lifestyle"]
+	photo_ids = PRODUCT_IMAGES.get(slug, [])
 	rows = []
 	for i in range(count):
+		if i < len(photo_ids):
+			url = _unsplash(photo_ids[i])
+		else:
+			url = _img(slug, labels[i] if i < len(labels) else str(i))
 		rows.append({
-			"image": _img(slug, labels[i] if i < len(labels) else str(i)),
+			"image": url,
 			"display_order": i + 1,
 			"is_primary": 1 if i == 0 else 0,
 			"alt_text": f"{alt_base} — {labels[i] if i < len(labels) else 'view ' + str(i)}",
@@ -391,6 +672,62 @@ PARENT_CATEGORIES = [
 	("New Arrivals", "Latest drops and fresh styles", 10),
 ]
 
+# Unsplash photo IDs for category hero images
+CATEGORY_IMAGES = {
+	# Parent categories
+	"Clothing": "1441986300917-64674bd600d8",
+	"Footwear": "1549298916-b41d501d3772",
+	"Accessories": "1611923134239-b9be5816e23c",
+	"Bags": "1553062407-98eeb64c6a62",
+	"Sportswear": "1571019613454-1cb2f99b2d8b",
+	"Formal Wear": "1507679799987-c73779587ccf",
+	"Winter Collection": "1483985988355-763728e1935b",
+	"Summer Collection": "1507525428034-b723cf961d3e",
+	"Unisex": "1523381210434-271e8be1f52b",
+	"New Arrivals": "1441984904996-e0b6ba687e04",
+	# Child categories
+	"T-Shirts & Tanks": "1521572163474-6864f9cf17ab",
+	"Polo Shirts": "1576566588028-4147f3842f27",
+	"Hoodies & Sweatshirts": "1556821840-3a63f95609a7",
+	"Jeans & Trousers": "1602810318383-e386cc2a3ccf",
+	"Shorts": "1591195853828-11db59a44f6b",
+	"Jackets & Coats": "1591047139829-d91aecb6caea",
+	"Sweaters": "1543163521-1bf539c55dd2",
+	"Dresses & Skirts": "1496747611176-843222e1e57c",
+	"Sneakers": "1549298916-b41d501d3772",
+	"Boots": "1608256246200-53e635b5b65f",
+	"Sandals & Slippers": "1603487742131-4160ec999306",
+	"Loafers & Moccasins": "1606107557195-0e29a4b5b4aa",
+	"Running Shoes": "1539185441755-769473a23570",
+	"Watches": "1524592094714-0f0654e20314",
+	"Sunglasses": "1511499767150-a48a237f0083",
+	"Belts & Wallets": "1556905055-8f358a7a47b2",
+	"Hats & Scarves": "1521369909029-2afed882baee",
+	"Jewellery": "1611312449408-fcece27cdbb7",
+	"Backpacks & Totes": "1553062407-98eeb64c6a62",
+	"Messenger & Laptop": "1584917865442-de89df76afd3",
+	"Duffel & Gym": "1595950653106-6c9ebd614d3a",
+	"Sling & Crossbody": "1560343090-f0409e92791a",
+	"Activewear Tops": "1571019613454-1cb2f99b2d8b",
+	"Activewear Bottoms": "1506629082955-511b1aa562c8",
+	"Compression Wear": "1594938298603-c8148c4dae35",
+	"Sports Shoes": "1539185441755-769473a23570",
+	"Blazers & Suits": "1507679799987-c73779587ccf",
+	"Formal Shirts": "1517841905240-472988babdf9",
+	"Formal Trousers": "1473966968600-fa801b869a1a",
+	"Formal Shoes": "1606107557195-0e29a4b5b4aa",
+	"Puffer Jackets": "1544022613-e87ca75a784a",
+	"Sweaters & Cardigans": "1543163521-1bf539c55dd2",
+	"Thermals": "1483985988355-763728e1935b",
+	"Scarves & Beanies": "1521369909029-2afed882baee",
+	"Summer Dresses": "1496747611176-843222e1e57c",
+	"Beach Wear": "1507525428034-b723cf961d3e",
+	"Light Shirts": "1517841905240-472988babdf9",
+	"Unisex Tees": "1523381210434-271e8be1f52b",
+	"Unisex Sneakers": "1549298916-b41d501d3772",
+	"This Season": "1441984904996-e0b6ba687e04",
+}
+
 CHILD_CATEGORIES = [
 	# (name, parent, description, display_order)
 	("T-Shirts & Tanks", "Clothing", "Casual tees and tank tops", 1),
@@ -440,17 +777,21 @@ def _create_categories():
 	count = 0
 	for name, desc, order in PARENT_CATEGORIES:
 		if not frappe.db.exists("Category", name):
+			img_id = CATEGORY_IMAGES.get(name)
 			frappe.get_doc({
 				"doctype": "Category", "category_name": name, "description": desc,
 				"is_child": 0, "is_active": 1, "display_order": order,
+				"image": _unsplash(img_id, 1200, 800) if img_id else None,
 			}).insert(ignore_permissions=True)
 			count += 1
 
 	for name, parent, desc, order in CHILD_CATEGORIES:
 		if not frappe.db.exists("Category", name):
+			img_id = CATEGORY_IMAGES.get(name)
 			frappe.get_doc({
 				"doctype": "Category", "category_name": name, "description": desc,
 				"is_child": 1, "parent_category": parent, "is_active": 1, "display_order": order,
+				"image": _unsplash(img_id, 1200, 800) if img_id else None,
 			}).insert(ignore_permissions=True)
 			count += 1
 
@@ -1812,6 +2153,7 @@ def _create_promotions(items_dict):
 			"priority_level": 1,
 			"apply_to": "Specific Items",
 			"badge_text": "20% OFF",
+			"banner_image": _unsplash("1507525428034-b723cf961d3e", 1200, 600),
 			"max_quantity_per_user": 3,
 			"total_stock_limit": 100,
 			"items": [{"reference_doctype": "Items", "reference_name": i} for i in item_ids[:5]],
@@ -1826,6 +2168,7 @@ def _create_promotions(items_dict):
 			"priority_level": 2,
 			"apply_to": "Specific Items",
 			"badge_text": "Rs.200 OFF",
+			"banner_image": _unsplash("1441984904996-e0b6ba687e04", 1200, 600),
 			"items": [{"reference_doctype": "Items", "reference_name": i} for i in item_ids[5:10]],
 		},
 		{
@@ -1838,6 +2181,7 @@ def _create_promotions(items_dict):
 			"priority_level": 1,
 			"apply_to": "All Items",
 			"badge_text": "30% OFF",
+			"banner_image": _unsplash("1441986300917-64674bd600d8", 1200, 600),
 		},
 		{
 			"promotion_title": "Expired Monsoon Sale",
@@ -1849,6 +2193,7 @@ def _create_promotions(items_dict):
 			"priority_level": 3,
 			"apply_to": "Specific Items",
 			"badge_text": "SALE",
+			"banner_image": _unsplash("1483985988355-763728e1935b", 1200, 600),
 			"items": [{"reference_doctype": "Items", "reference_name": i} for i in item_ids[:3]],
 		},
 		{
@@ -1861,6 +2206,7 @@ def _create_promotions(items_dict):
 			"priority_level": 5,
 			"apply_to": "All Items",
 			"badge_text": "10% OFF",
+			"banner_image": _unsplash("1611923134239-b9be5816e23c", 1200, 600),
 			"max_quantity_per_user": 5,
 		},
 	]
@@ -1879,6 +2225,7 @@ def _create_promotions(items_dict):
 		doc.priority_level = p.get("priority_level", 1)
 		doc.apply_to = p.get("apply_to", "All Items")
 		doc.badge_text = p.get("badge_text", "")
+		doc.banner_image = p.get("banner_image")
 		doc.max_quantity_per_user = p.get("max_quantity_per_user", 0)
 		doc.total_stock_limit = p.get("total_stock_limit", 0)
 		for item in p.get("items", []):
@@ -2000,6 +2347,29 @@ def _create_product_bundles():
 		print("  Not enough variants for bundles, skipping")
 		return
 
+	bundle_images = {
+		"Summer Essentials Bundle": [
+			"1507525428034-b723cf961d3e",  # summer vibes
+			"1523381210434-271e8be1f52b",  # casual wear
+		],
+		"Weekend Getaway Pack": [
+			"1441984904996-e0b6ba687e04",  # travel fashion
+			"1553062407-98eeb64c6a62",  # backpack
+		],
+		"Work From Home Kit": [
+			"1556821840-3a63f95609a7",  # comfortable hoodie
+			"1543163521-1bf539c55dd2",  # cozy cardigan
+		],
+		"Gift Set — For Him": [
+			"1507679799987-c73779587ccf",  # men's fashion
+			"1524592094714-0f0654e20314",  # watch
+		],
+		"Gift Set — For Her": [
+			"1496747611176-843222e1e57c",  # women's fashion
+			"1515562141-33d0ef6a4a22",  # jewellery
+		],
+	}
+
 	bundles = [
 		{"bundle_name": "Summer Essentials Bundle", "items": variants[0:3], "discount_pct": 15},
 		{"bundle_name": "Weekend Getaway Pack", "items": variants[3:6], "discount_pct": 12},
@@ -2025,6 +2395,15 @@ def _create_product_bundles():
 				"variant_title": v.title,
 				"bundle_quantity": 1,
 				"individual_price": float(v.price or 0),
+			})
+		# Add images
+		photo_ids = bundle_images.get(b["bundle_name"], [])
+		for idx, pid in enumerate(photo_ids):
+			doc.append("images", {
+				"image": _unsplash(pid),
+				"display_order": idx + 1,
+				"is_primary": 1 if idx == 0 else 0,
+				"alt_text": f"{b['bundle_name']} — {'hero' if idx == 0 else 'detail'}",
 			})
 		doc.insert()
 		count += 1
